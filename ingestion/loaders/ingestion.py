@@ -25,17 +25,33 @@ def run_archetypes():
     print("Archetype ingestion complete.")
 
 
+def run_formats():
+    from ingestion.loaders.formats_loader import load_formats
+    print("Running format ingestion...")
+    load_formats()
+    print("Format ingestion complete.")
+
+
+def run_banlist():
+    from ingestion.loaders.banlist_loader import load_banlist
+    print("Running banlist ingestion...")
+    load_banlist()
+    print("Banlist ingestion complete.")
+
+
 def run_all():
     print("Running full ingestion pipeline...")
     run_cards()
     run_decks()
     run_archetypes()
+    run_formats()
+    run_banlist()
     print("All ingestion tasks complete.")
 
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python ingestion/ingestion.py [cards|decks|archetypes|all]")
+        print("Usage: python ingestion/ingestion.py [cards|decks|archetypes|formats|banlist|all]")
         sys.exit(1)
 
     task = sys.argv[1].lower()
@@ -46,11 +62,15 @@ def main():
         run_decks()
     elif task == "archetypes":
         run_archetypes()
+    elif task == "formats":
+        run_formats()
+    elif task == "banlist":
+        run_banlist()
     elif task == "all":
         run_all()
     else:
         print(f"Unknown task: {task}")
-        print("Valid tasks: cards, decks, archetypes, all")
+        print("Valid tasks: cards, decks, archetypes, formats, banlist, all")
         sys.exit(1)
 
 

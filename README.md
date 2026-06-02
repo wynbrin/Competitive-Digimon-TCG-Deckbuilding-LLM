@@ -51,6 +51,8 @@ python scripts/validate_decks.py                    # check data integrity
 - `archetype_keywords` — signal keywords for each archetype
 - `deck_archetypes` — classification results: which archetype(s) each deck matches (populated by `classify_decks.py`)
 - `deck_embeddings` — pgvector embedding per deck for semantic search (populated by `embed_decks.py`)
+- `formats` — the meta/format calendar (block_id, date range, region); maps a deck's date to its meta
+- `banlist` — per-format banned/restricted cards (legality context for the assistant)
 
 **Analytical views** (read-only, always live — defined in `schema/005_meta_stats.sql`):
 - `v_archetype_card_usage` — per archetype, each card's inclusion % and avg copies (staples vs. tech)
@@ -105,6 +107,31 @@ ORDER BY first_place_pct DESC;
 > Note: `v_archetype_card_usage` groups by `card_id`, so different printings of a
 > card (same name, different set number) appear as separate rows — intentional,
 > since printings can differ in effect/level.
+
+## Formats & Banlist
+
+The **format calendar** lives in [data/formats.txt](data/formats.txt) — one line per
+meta period (`block_id | name | region | start_date | end_date`). It powers two things:
+
+- **Auto-assigning a meta to dated results.** `formats_loader.format_for_date(conn, date)`
+  returns the `block_id` whose window contains a date — so any tournament result with a
+  date can be placed in the right meta without manual tagging.
+- **Human-readable meta names** in the assistant's context.
+
+> The seeded dates are auto-derived from observed deck dates and are approximate —
+> refine them against real set-release / banlist dates.
+
+The **banlist** lives in [data/banlist.txt](data/banlist.txt)
+(`block_id | status | card name | note`, where status is `banned` / `restricted` /
+`limited_2` / `limited_3`). It ships empty — populate it from the official Bandai
+restriction lists. When you ask the assistant with `--block`, the banlist for that
+format is fed in as binding legality context (it won't recommend banned cards or
+over-limit copies).
+
+```powershell
+python -m ingestion.loaders.ingestion formats   # sync the format calendar
+python -m ingestion.loaders.ingestion banlist    # sync the banlist
+```
 
 ## Deckbuilding Assistant (LLM)
 

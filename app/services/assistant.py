@@ -29,8 +29,27 @@ missing. Never invent card names, effects, or numbers.
   * There is NO head-to-head match data — you cannot give real matchup win rates. Discuss \
 matchups only qualitatively (card choices, archetype composition) and flag when you are speculating.
   * "Inclusion %" is per card printing; the same card name can appear as multiple set versions.
+- If a BANLIST / RESTRICTIONS section is present, treat it as binding for that format: never \
+recommend a banned card, and respect copy limits (restricted = max 1). If the section is absent, \
+do not assume anything about legality.
 
 Be concise and practical: lead with the direct answer, then justify it with the numbers."""
+
+
+def _format_name(conn, block_id: str) -> Optional[str]:
+    with conn.cursor() as cur:
+        cur.execute("SELECT name FROM formats WHERE block_id = %s;", (block_id,))
+        row = cur.fetchone()
+        return row["name"] if row else None
+
+
+def _banlist(conn, block_id: str):
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT card_name, status, note FROM banlist WHERE block_id = %s ORDER BY status, card_name;",
+            (block_id,),
+        )
+        return cur.fetchall()
 
 
 def _archetype_named_in(conn, question: str) -> Optional[str]:
@@ -151,10 +170,22 @@ def build_context(
 
     lines: List[str] = ["CONTEXT", "======="]
 
-    scope = f"block {block_id}" if block_id else "all formats"
+    if block_id:
+        fmt_name = _format_name(conn, block_id)
+        scope = f"{fmt_name} [{block_id}]" if fmt_name else block_id
+    else:
+        scope = "all formats"
     lines.append(f"\nMeta share ({scope}):")
     for r in _meta_share(conn, block_id):
         lines.append(f"  - {r['archetype_name']}: {r['deck_count']} decks ({r['share']}%)")
+
+    if block_id:
+        bl = _banlist(conn, block_id)
+        if bl:
+            lines.append(f"\nBANLIST / RESTRICTIONS for {scope}:")
+            for r in bl:
+                note = f" ({r['note']})" if r["note"] else ""
+                lines.append(f"  - {r['card_name']}: {r['status']}{note}")
 
     if focus:
         usage = _card_usage(conn, focus)

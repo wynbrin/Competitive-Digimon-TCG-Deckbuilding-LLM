@@ -1,0 +1,20 @@
+# Digimon TCG banlist / restriction list per format — source of truth.
+# Fields (pipe-separated):  block_id | status | card name | note (optional)
+#
+# block_id must match a row in data/formats.txt.
+# status is one of:
+#   banned       - not allowed at all
+#   restricted   - max 1 copy
+#   limited_2    - max 2 copies
+#   limited_3    - max 3 copies
+# card name is matched loosely against cards.name (case-insensitive).
+#
+# This file ships EMPTY on purpose — fill it in from the official Bandai
+# restriction lists for each format. Examples of the expected shape (commented
+# out; replace with real entries):
+#
+# bt24_ex11 | restricted | Example Card Name        | hit to 1 in the 2026-xx update
+# bt24_ex11 | banned     | Another Card             |
+# ex10_bt23 | limited_2  | Some Option              | max 2
+#
+# Add one line per (format, card). Re-run the loader to sync.

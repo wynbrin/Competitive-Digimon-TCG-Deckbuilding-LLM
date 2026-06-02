@@ -1,0 +1,30 @@
+# Digimon TCG format calendar — source of truth for meta windows.
+# Fields (pipe-separated):  block_id | name | region | start_date | end_date
+# Dates are YYYY-MM-DD. Leave end_date blank for the current/ongoing format.
+# A deck is assigned to the most recent format whose start_date <= its date
+# (see ingestion/loaders/formats_loader.py: format_for_date).
+#
+# NOTE: start/end dates were auto-seeded from the observed deck dates in the
+# scraped data and are APPROXIMATE — refine them against real set-release /
+# banlist dates. A few have stray outlier dates (e.g. an early misdated bt15
+# list pulls its start back to 2023); fix those when you have the real dates.
+# Ordered oldest -> newest by set sequence.
+
+bt1_bt5           | BT1-BT5 English Format                       | EN | 2020-12-03 | 2021-10-09
+bt6               | BT6                                          | EN | 2021-10-10 | 2022-05-07
+bt8_st9_st10      | BT8 + ST9 + ST10                             | EN | 2022-05-08 | 2022-07-23
+bt9_ex2_st12_st13 | BT9 + EX2 + ST12 + ST13                      | EN | 2022-07-24 | 2022-10-13
+bt10_ex3          | BT10 + EX3                                   | EN | 2022-10-14 | 2023-02-16
+bt11              | BT11                                         | EN | 2023-02-17 | 2023-04-27
+bt12              | BT12                                         | EN | 2023-04-28 | 2023-07-18
+bt13              | BT13                                         | EN | 2023-07-19 | 2023-11-16
+bt14_ex5          | BT14 + EX5                                   | EN | 2023-11-17 | 2024-05-10
+bt15              | BT15 Exceed Apocalypse                       | EN | 2024-02-19 | 2024-05-10
+bt16              | BT16 Beginning Observer                      | EN | 2024-05-11 | 2024-08-04
+bt17              | BT17 Secret Crisis                           | EN | 2024-08-05 | 2024-10-27
+bt18_bt19         | BT18 + BT19 Special Booster                  | EN | 2024-10-28 | 2024-12-28
+ex8_bt2_5         | EX8 + English Special Booster Ver 2.5        | EN | 2024-12-29 | 2025-06-26
+ex9_bt22          | EX9 Versus Monsters / BT22 Cyber Eden        | EN | 2025-06-27 | 2025-09-18
+ex10_bt23         | EX10 Sinister Order / BT23 Hacker's Slumber  | EN | 2025-09-19 | 2025-12-21
+bt24_ex11         | BT24 Time Stranger / EX11 Dawn of Liberator  | EN | 2025-12-22 | 2026-03-26
+ad01              | AD-01 Digimon Generation Banlist             | EN | 2026-03-27 |

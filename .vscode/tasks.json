@@ -87,6 +87,34 @@
       "problemMatcher": []
     },
     {
+      "label": "Ingest: Formats",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "-m",
+        "ingestion.loaders.ingestion",
+        "formats"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ingest: Banlist",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "-m",
+        "ingestion.loaders.ingestion",
+        "banlist"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Validate: Decks integrity",
       "type": "shell",
       "command": "${command:python.interpreterPath}",
