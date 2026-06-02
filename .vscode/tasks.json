@@ -121,6 +121,18 @@
         "reveal": "always"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Embed: Decks (for semantic search)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "scripts/embed_decks.py"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
     }
   ]
 }

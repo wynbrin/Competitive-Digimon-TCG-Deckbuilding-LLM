@@ -33,6 +33,8 @@ python scripts/migrate.py                           # reset schema
 python scripts/ingest_all.py                        # scrape + load everything
 python -m ingestion.loaders.ingestion archetypes    # just archetypes
 python scripts/classify_decks.py                    # label decks by archetype
+python scripts/embed_decks.py                        # build deck embeddings (semantic search)
+python scripts/search_decks.py "red aggro Agumon"   # semantic deck search
 python scripts/validate_decks.py                    # check data integrity
 ```
 
@@ -47,6 +49,7 @@ python scripts/validate_decks.py                    # check data integrity
 - `archetypes` — archetype taxonomy
 - `archetype_keywords` — signal keywords for each archetype
 - `deck_archetypes` — classification results: which archetype(s) each deck matches (populated by `classify_decks.py`)
+- `deck_embeddings` — pgvector embedding per deck for semantic search (populated by `embed_decks.py`)
 
 **Analytical views** (read-only, always live — defined in `schema/005_meta_stats.sql`):
 - `v_archetype_card_usage` — per archetype, each card's inclusion % and avg copies (staples vs. tech)
@@ -141,7 +144,7 @@ data/
 
 - [x] **Deck classifier** — match deck cards against archetype keywords to label each deck (`scripts/classify_decks.py`). Unmatched decks reveal archetypes missing from `archetypes.txt`.
 - [x] **Meta stats** — card-inclusion rates, tech choices, meta share, and 1st-place rates per archetype/block (`schema/005_meta_stats.sql` views). True head-to-head matchup win rates are not derivable (source has placements, not match results).
-- [ ] **RAG retrieval** — pgvector embeddings of decks + retrieval layer
+- [x] **RAG retrieval** — pgvector deck embeddings (`embed_decks.py`) + semantic search (`search_decks.py`, `app/services/retrieval.py`)
 - [ ] **LLM assistant** — Claude API with retrieved decks + meta stats as context
 
 ## Troubleshooting
