@@ -35,6 +35,7 @@ python -m ingestion.loaders.ingestion archetypes    # just archetypes
 python scripts/classify_decks.py                    # label decks by archetype
 python scripts/embed_decks.py                        # build deck embeddings (semantic search)
 python scripts/search_decks.py "red aggro Agumon"   # semantic deck search
+python scripts/ask.py "tech cards for Imperialdramon?"  # LLM deckbuilding assistant
 python scripts/validate_decks.py                    # check data integrity
 ```
 
@@ -105,6 +106,32 @@ ORDER BY first_place_pct DESC;
 > card (same name, different set number) appear as separate rows — intentional,
 > since printings can differ in effect/level.
 
+## Deckbuilding Assistant (LLM)
+
+`scripts/ask.py` retrieves grounding context (semantic deck search + meta-stat
+views) and asks Claude (`claude-opus-4-8`) to answer using **only** that context —
+it cites inclusion %, distinguishes staples from tech, and refuses to invent cards.
+
+Setup (one-time): add your key to `.env` and install the SDK.
+```
+# .env
+ANTHROPIC_API_KEY=sk-ant-...
+```
+```powershell
+pip install anthropic        # or: conda env update -f environment.yml
+```
+
+Ask:
+```powershell
+python scripts/ask.py "What tech cards should I run in Imperialdramon right now?"
+python scripts/ask.py "How do I build Puppets?" --block bt24_ex11
+python scripts/ask.py "What beats Royal Knights?" --archetype "Royal Knights" --k 8
+python scripts/ask.py "..." --show-context   # also print the retrieved context
+```
+
+> The assistant is grounded on tournament *placement* data, not head-to-head
+> results — it answers matchup questions qualitatively, not with win rates.
+
 ## Project Structure
 
 ```
@@ -145,7 +172,7 @@ data/
 - [x] **Deck classifier** — match deck cards against archetype keywords to label each deck (`scripts/classify_decks.py`). Unmatched decks reveal archetypes missing from `archetypes.txt`.
 - [x] **Meta stats** — card-inclusion rates, tech choices, meta share, and 1st-place rates per archetype/block (`schema/005_meta_stats.sql` views). True head-to-head matchup win rates are not derivable (source has placements, not match results).
 - [x] **RAG retrieval** — pgvector deck embeddings (`embed_decks.py`) + semantic search (`search_decks.py`, `app/services/retrieval.py`)
-- [ ] **LLM assistant** — Claude API with retrieved decks + meta stats as context
+- [x] **LLM assistant** — Claude (`claude-opus-4-8`) grounded on retrieved decks + meta stats (`scripts/ask.py`, `app/services/assistant.py`)
 
 ## Troubleshooting
 

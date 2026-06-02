@@ -133,6 +133,26 @@
         "reveal": "always"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Ask: Deckbuilding assistant",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "scripts/ask.py",
+        "${input:question}"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "question",
+      "type": "promptString",
+      "description": "Ask the Digimon deckbuilding assistant"
     }
   ]
 }
