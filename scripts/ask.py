@@ -19,6 +19,12 @@ import argparse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(ROOT)
 
+# Windows consoles default to cp1252 and crash on em-dashes/arrows the model emits.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, ValueError):
+    pass
+
 from dotenv import load_dotenv
 
 from app.db.connection import get_connection
@@ -36,7 +42,8 @@ def main():
     parser.add_argument("--show-context", action="store_true", help="print the retrieved context too")
     args = parser.parse_args()
 
-    load_dotenv()
+    # override=True so .env wins over a stale/empty ANTHROPIC_API_KEY in the shell env.
+    load_dotenv(override=True)
     if not os.getenv("ANTHROPIC_API_KEY"):
         print("ERROR: ANTHROPIC_API_KEY is not set (add it to .env).")
         sys.exit(1)
