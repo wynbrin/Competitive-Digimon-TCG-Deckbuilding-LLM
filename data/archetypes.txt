@@ -4,7 +4,7 @@ Alphamon: grademon, alphamon, ouryumon, BT9 Alphamon: ouryuken, dourgreymon
 
 CS Alpha: Kyoko Kuremi, Takumi aiba, plamon, terriermon, hagurumon, Alphamon
 
-Dexdorugora: DeathXmon, DexDorugoramon, Dorugoramon, Kosuke Kisakata
+Dexdorugora: DeathXmon, DexDorugoramon, Dorugoramon, Kosuke Kisakata, loogamon, dorugamon, dexdorugamon, tyrannomon, dexdorugreymon, dorugreymon, helloogarmon, code cracker fang, eiji nagashimi
 
 xros heart rush: Shoutmon X4 BT10, Taiki Kudo, Zenjiro tsuguri, Akari Hiniomoto
 
@@ -61,6 +61,7 @@ Hunters: Ryoma Mogami, Taiki Kudo, Yuu amano, Astamon, Quartzmon, Quartzmon ACE,
 Rival Hunters: Ryoma Mogami, Astamon, Quartzmon, Quartzmon ACE,, gumdramon, opossumon, Cho-Hakkaimon, yasyamon, dracmon, Ren Tobari, Airu Suzaki
 
 Examon: dracomon, Coredramon, Wingdramon, Groundramon, Slayerdramon, Breakdramon, examon, Examon X-antibody
+
 Seven Demon Lords/7DL: Lilithmon, Beelzemon, Creepymon, Belphemon: Rage Mode, Leviamon, BArbamon, Lucemon, Lucemon: Chaos Mode, Rise of the Seven Great Demon Lords, biting crush, Gate of Deadly Sins, Ogudomon
 
 Royal Knights: Magnamon, UlforceVeedramon, Dynasmon, LordKnightmon, Kentaurosmon, Jesmon, Examon, Craniamon, Gallantmon, Alphamon, Omnimon, leopardmon, Gankoomon, Omnimon X Antibody, Omekamon, Cool Boy, Royal knights of the Purge, The Last Guardian, jesmon GX, Alphamon: Ouryumon ACE, MedievalGallantmon,  King Drasil_7D6
@@ -147,7 +148,7 @@ Cerberus: Cerberus X-antibody, dobermon x antibody, goblimon, labramon, Anubismo
 
 TS (General): TS promo demidevimon, TS promo patamon, TS promo gomamon, Dan Yuki & Kanan Yuki, Aegiomon, Silphymon, Homeros, Asuna Shiroki, Neptunemon, Merukimon, Minervamon, Venusmon, In-Between Theater
 
-TS Neptune: Venusmon, Neptunemon, Divermon, Shellmon, Homeros, Aegiomon, elecmon, demidevimon, gomamon, Abyss Sanctuary: Throne Room
+TS Neptune: Venusmon, Neptunemon, Divermon, Shellmon, Homeros, Aegiomon, elecmon, demidevimon, gomamon, Abyss Sanctuary: Throne Room, lanamon, calmaramon
 
 Ts Meruki: Silphymon, Gatomon, Garurumon, Weregarurumon, aegiomon,  Dan Yuki & Kanan Yuki, Aegiomon, Silphymon, Homeros, Asuna Shiroki, Merukimon, Minervamon, Central Town: throne Room
 
@@ -178,7 +179,7 @@ Galaticmon: vemmon, snatchmon, Destromon, Zenith, galaticmon, Fusionize
 
 Diaboromon: keramon, kurisarimon, infermon, diaboromon, Arata Sanada
 
-Machinedramon: Machinedramon, Chaosdramon, Chaosdramon X, metalgreymon, metaltyrannon, andromon, metalmamemon, supreme connection
+Machinedramon: Machinedramon, Chaosdramon, Chaosdramon X, metalgreymon, metaltyrannon, andromon, metalmamemon, supreme connection, attack of the heavy metal digimon, ultimate connection
 
 DM Toolbox: analog man, analog Youth, metalgreymon, metaltyrannon, andromon, metalmamemon, meat, protein
 
@@ -188,12 +189,65 @@ Lucemon: Lucemon, Lucemon: Chaos Mode, Lucemon: Satan Mode,  Lucemon: Larva, Dok
 
 Leopardmon: Leoparmon x antibody, leopardmon, zephagamon ace, cherubimon, grandgalemon, palmon, mimi, Hidden potential discovered, lillymon
 
-Glowing dawn: e-Pulse, gekkomon, pristimon, armalizamon, Reina Sakuya & Makoto Kuonji, Tomoro Tenma & Kyo Sawashiro, glowing dawn, monarchlizamon, artatusmon
+Glowing dawn: e-Pulse, gekkomon, pristimon, armalizamon, Reina Sakuya & Makoto Kuonji, Tomoro Tenma & Kyo Sawashiro, glowing dawn, monarchlizamon, artatusmon, habakirimon, tomoro tenma
 
 Datasqaud: agumon, gaomon, lalamon, marcus damon and thomas H. Norstein, ShineGreymon/GeoGrey Sword, Yoshino Fujieda & Keenan Crier, Shinegreymon burst mode/final shining burst, rizegreymon, machgaogamon, sunflowmon, lilamon, DNA Chearge 
 
-R/P Imperial: veemon, wormmon, shadramon, dinobeemon, paildramon, mist memory boost 
+R/P Imperial: veemon, wormmon, shadramon, dinobeemon, paildramon, mist memory boost , calling from darkness, magenta memory boost
 
 Adventure: Tai Kamiya and Izzy izumi, Matt ishida and T.K. takaishi, birddramon, togemon, metalgreymon, lillymon, megakabuterimon, garudamon, wargreymon ACE, metalgarurumon ace, palmon, biyomon, agumon, gabumon, Metalgreymon ALterous mode, Weregarurumon Sagitterius mode
 
+Hudie: Hudiemon, gotsumon, tentomon, betamon, wormmon, angemon, seadramon, kabuterimon, ankylomon, shakkoumon, Chitose Imai, Keisuke Amasawa, Erika mishima, ryuji mishima, Mirei Mikagura
 
+Ragnalord/Legend-Arms: ludomon, zubamon, tialudomon, zubaeagermon, RaijiLudomon, Duramon, BryweLudramon, durandamon, Ragnalordmon, ragnalordmon ACE
+
+Green Eosmon: Eosmon, Menoa Bellucci, Morphomon
+
+Apppmon Gaiamon: Navimon, tweetmon, gatchmon, gossipmon, dogatchmon, timemo, charismon, globemon, gaiamon, gaiamon ACE, Haru shinkai, Eri Karan, App link, god grade unleashed, big bang punch!
+
+Appmon Rebootmon: gatchmon, onmon, offmon, tweetmon, logimon, craftmon, timemon, logamon, dogatchmon, gossipmon, bootmon, charismon, shutmon, Rebootmon, kazuki & itsuki, Haru shinkai, Eri Karan, cyber engage, god grade unleashed
+
+Appmon hadesmon: protecmon, hackmon, pipomon, dezipmon, raidramon, gossipmon, scopemon, docmon, revivemon, biomon, Hadesmon, rei katsura,  kazuki & itsuki, Haru shinkai, App link, super hacking, big bang punch!, cyber engage
+
+Appmon Poseidomon: dokamon, perorimon, musclemon, navimon, tweetmon, gatchmon, calendamon, watchmon, coordemon, consulmon, dosukomon, coachmon, gossipmon, dogatchmon, timemon, weatherdramon, beautymon, globemon, oujamon, Poseidomon, App link, big bang punch!, Haru shinkai, Eri Karan, Torajiro Asuka, yujin ozora
+
+Abbadomon: eyesmon, eyesmon scatter mode, eyesmon, rareraremon, soundbirdmon, abbadomon core, abbadomon, negamon
+
+Lordknightmon: guilmon, guilmon x, growlmon, growlmon x, cerberusmon, cerberus x, lordknightmon, lordknightmon x, x antibody proto form, labramon
+
+Galaxy: lunamon, coronamon, gaogamon, lekismon, firamon, crescemon, flaremon, huankunmon, hexeblaumon, dianamon, apollomon, koh & sayo, sayo & koh, sayo, 
+
+ACCEL: falcomon, liollmon, commandramon, diatrymon, liamon, sealsdramon, Loaderleomon tankdramon, crowmon, varodurumon, bancholeomon, darkdramon, darkdramon ace, chaosmoin, chaosmon valdur arm, singularity of Chaos
+
+ 
+Creepymon: demidevimon, devimon, skullsatamon, creepymon, vilemon, creepymon, creepymon x, impmon, rivals barrage, seventh graviton, flame inferno, death slinger
+
+Magnamon X/Armor Rush:  veemon, flamedramon, magnamon, lighdramon, paildramon, davis motomiya, awakening of the golden knight, armor digivolution, fire rocket, Magnamon X
+
+
+Aquatic: Unique emblem: Poseida Legion, sangomon, shellmon, seadramon, megaseadramon, seadramon x, megaseadramon, megaseadramon x, metalseadramon, xiquemon, lanamon, calmaramon, marinebullmon, ariemon, yao qinglan, ryugamon, neptunemon
+
+
+Chronicle: dorumon, ryudamon, raptordramon, ginryumon, grademon, hisyaryumon, alphamon, ouryumon, Alphamon Ouryuken Ace, Kota Domoto & Yuji Musya, yuji Musya, release of teh sealed knight!, fellowship of Hope’s Keepers
+
+Belphemon: phascomon, protogizmon, gizmon, punkmon, astamon, nidhoggmon, gizmon XT, gizmon AT, belphemon sleep mode, belphemon rage mode, akihiro kurata, belphemon x, seventh penetration
+
+Myotismon: yukio Oikawa, Arukenimon & mummymon, malomyotismon, venommyotismon, myotismon x, myotismon, mummymon, arukenimon
+
+Jesmon/Gankoo Turtle: Jesmon, Gankoomon, Jesmon x, Gankoomon x, Jesmon gx, jesmon gx ACE, huckmon baohuckmon, saviorhuckmon, sistemon blanc, sistermon blanc (awakened), sistermon ciel, sistermon ciel (awakened)
+
+Justimon: Justimon critical arm, Justimon accel arm, justimon blitz arm, justimon X, strikedramon, monodramon, device, ryo akiyama, ryuji mishima
+
+Numemon: numemon, numemon x, chuumon, kokuwamon, ukkomon, monzaemon, warumonzaemon, monzaemon x. Platinumnumemon, geremon, satsuki tamahime
+
+Dm Version 2: elecmon, gabumon, betamon, biyomon, angemon, vegiemon, garurumon, kabuterimon, vademon, metalmamaemon, analog youth, analog man, file island, meat
+
+Linkz: Vorvomon, Jazamon, jazardmon, lavorvomon, jazarichmon, lavogaritamon, volcanicdramon, metallicdramon, hina kurihana
+
+Fenriloogamon: Fenriloogamon, soloogamon, hellogamon, SoC, loogarmon, tyrannomon, loogamon, code cracker fang, eiji nagasumi, Code cracker fang & hacker judge, The Demon wolf of the castle of nine wolves, fenriloogamon takemikazuchi, pulsemon, Kazuchi, SEEKERS
+
+Green gacha: koromon, gotsumon, tortomon, mametyramon, jagamon, Izzy Izumi & Mimi Tachikawa
+
+D-brigade/Digipolice: commandramon, hicommandramon, sealsdramon, tankdramon, cargodramon, darkdramon, brigadramon, satsuki tamahime, Shuu yulin, DCD Bomb, numemon
+
+Ouryumon DigiPolice: ryudamon, ginryumon, commandramon, hisaryumon, ouryumon, shuu yulin, the crossroad witch
