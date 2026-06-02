@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Ingest: All",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/ingest_all.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Migrate: Reset schema",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/migrate.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

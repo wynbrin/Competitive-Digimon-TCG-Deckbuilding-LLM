@@ -27,5 +27,5 @@ data/processed/decks/
 # OS / editor
 .DS_Store
 Thumbs.db
-.vscode/
 .idea/
+# (.vscode/ IS committed so tasks/extensions are shared; no local settings there)

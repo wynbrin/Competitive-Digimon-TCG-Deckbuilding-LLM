@@ -1,0 +1,89 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docker: Start",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up", "-d"],
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Migrate: Reset schema",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["scripts/migrate.py"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ingest: All (cards + decks + archetypes)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["scripts/ingest_all.py"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "dependsOn": ["Docker: Start"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Ingest: Cards only",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "ingestion.loaders.ingestion", "cards"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ingest: Decks only",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "ingestion.loaders.ingestion", "decks"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ingest: Archetypes only",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "ingestion.loaders.ingestion", "archetypes"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Validate: Decks integrity",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["scripts/validate_decks.py"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Export: Decks to JSON",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["scripts/export_decks.py"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
