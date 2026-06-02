@@ -32,6 +32,7 @@ Or from the terminal:
 python scripts/migrate.py                           # reset schema
 python scripts/ingest_all.py                        # scrape + load everything
 python -m ingestion.loaders.ingestion archetypes    # just archetypes
+python scripts/classify_decks.py                    # label decks by archetype
 python scripts/validate_decks.py                    # check data integrity
 ```
 
@@ -45,6 +46,7 @@ python scripts/validate_decks.py                    # check data integrity
 - `deck_cards` — one row per card in each deck
 - `archetypes` — archetype taxonomy
 - `archetype_keywords` — signal keywords for each archetype
+- `deck_archetypes` — classification results: which archetype(s) each deck matches (populated by `classify_decks.py`)
 
 Watch changes live with **SQLTools** (VS Code extension, configured) or `docker exec -it digimon-db psql -U postgres -d digimon`.
 
@@ -99,7 +101,7 @@ data/
 
 ## Next Steps
 
-- [ ] **Deck classifier** — match deck cards against archetype keywords to label each deck
+- [x] **Deck classifier** — match deck cards against archetype keywords to label each deck (`scripts/classify_decks.py`). Unmatched decks reveal archetypes missing from `archetypes.txt`.
 - [ ] **Meta stats** — card-inclusion rates, tech choices, matchup win rates per archetype/block
 - [ ] **RAG retrieval** — pgvector embeddings of decks + retrieval layer
 - [ ] **LLM assistant** — Claude API with retrieved decks + meta stats as context
