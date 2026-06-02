@@ -1,4 +1,4 @@
-# ingestion/ingestion.py
+# ingestion/loaders/ingestion.py
 
 import sys
 from ingestion.loaders.meta_blocks import META_BLOCKS
@@ -18,16 +18,24 @@ def run_decks():
     print("Deck ingestion complete.")
 
 
+def run_archetypes():
+    from ingestion.loaders.archetypes_loader import load_archetypes
+    print("Running archetype ingestion...")
+    load_archetypes()
+    print("Archetype ingestion complete.")
+
+
 def run_all():
     print("Running full ingestion pipeline...")
     run_cards()
     run_decks()
+    run_archetypes()
     print("All ingestion tasks complete.")
 
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python ingestion/ingestion.py [cards|decks|all]")
+        print("Usage: python ingestion/ingestion.py [cards|decks|archetypes|all]")
         sys.exit(1)
 
     task = sys.argv[1].lower()
@@ -36,11 +44,13 @@ def main():
         run_cards()
     elif task == "decks":
         run_decks()
+    elif task == "archetypes":
+        run_archetypes()
     elif task == "all":
         run_all()
     else:
         print(f"Unknown task: {task}")
-        print("Valid tasks: cards, decks, all")
+        print("Valid tasks: cards, decks, archetypes, all")
         sys.exit(1)
 
 
