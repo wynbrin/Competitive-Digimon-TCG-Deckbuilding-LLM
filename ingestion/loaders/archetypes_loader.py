@@ -86,13 +86,21 @@ def parse_archetypes(path: str = ARCHETYPES_FILE) -> List[Archetype]:
     return entries
 
 
-def load_archetypes(path: str = ARCHETYPES_FILE):
+def load_archetypes(path: str = ARCHETYPES_FILE, prune: bool = True):
+    """Sync the archetype tables to the source file.
+
+    The text file is the single source of truth, so by default this makes the
+    DB exactly mirror it: archetypes and keywords are upserted, and any rows no
+    longer present in the file are removed (set ``prune=False`` for additive-only).
+    Existing archetype ids are preserved across re-runs (matched by slug).
+    """
     entries = parse_archetypes(path)
 
     conn = get_connection()
     try:
         with conn.cursor() as cur:
             total_keywords = 0
+            seen_slugs = []
             for slug, name, keywords in entries:
                 cur.execute(
                     """
@@ -104,6 +112,19 @@ def load_archetypes(path: str = ARCHETYPES_FILE):
                     (slug, name),
                 )
                 archetype_id = cur.fetchone()["id"]
+                seen_slugs.append(slug)
+
+                norms = [norm for _, norm in keywords]
+                if prune:
+                    # Drop keywords that were removed from this archetype's line.
+                    cur.execute(
+                        """
+                        DELETE FROM archetype_keywords
+                        WHERE archetype_id = %s
+                          AND NOT (keyword_norm = ANY(%s));
+                        """,
+                        (archetype_id, norms),
+                    )
 
                 if keywords:
                     execute_values(
@@ -111,13 +132,25 @@ def load_archetypes(path: str = ARCHETYPES_FILE):
                         """
                         INSERT INTO archetype_keywords (archetype_id, keyword, keyword_norm)
                         VALUES %s
-                        ON CONFLICT (archetype_id, keyword_norm) DO NOTHING
+                        ON CONFLICT (archetype_id, keyword_norm)
+                        DO UPDATE SET keyword = EXCLUDED.keyword
                         """,
                         [(archetype_id, kw, norm) for kw, norm in keywords],
                     )
                     total_keywords += len(keywords)
 
+            removed = 0
+            if prune:
+                # Drop archetypes no longer present in the file.
+                cur.execute(
+                    "DELETE FROM archetypes WHERE NOT (slug = ANY(%s));",
+                    (seen_slugs,),
+                )
+                removed = cur.rowcount
+
         conn.commit()
-        print(f"Loaded {len(entries)} archetypes ({total_keywords} keywords).")
+        msg = f"Synced {len(entries)} archetypes ({total_keywords} keywords)"
+        msg += f"; removed {removed} stale archetype(s)." if prune else "."
+        print(msg)
     finally:
         conn.close()
