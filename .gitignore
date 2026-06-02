@@ -1,0 +1,31 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Secrets / local config
+.env
+.env.local
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large generated artifacts
+output.png
+
+# Scraped per-deck dumps (bulk; backed by Postgres + re-scrape).
+# Aggregates elsewhere in data/ (archetypes.json, decks_export*.json, etc.) are kept.
+data/raw/decks/
+data/processed/decks/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

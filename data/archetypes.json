@@ -1,0 +1,1463 @@
+{
+  "sukamon_etemon": {
+    "name": "Sukamon/Etemon",
+    "keywords": [
+      "Sukamon",
+      "chuumon",
+      "etemon",
+      "suka's curse"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "alphamon": {
+    "name": "Alphamon",
+    "keywords": [
+      "grademon",
+      "alphamon",
+      "ouryumon",
+      "BT9 Alphamon: ouryuken",
+      "dourgreymon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "cs_alpha": {
+    "name": "CS Alpha",
+    "keywords": [
+      "Kyoko Kuremi",
+      "Takumi aiba",
+      "plamon",
+      "terriermon",
+      "hagurumon",
+      "Alphamon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "dexdorugora": {
+    "name": "Dexdorugora",
+    "keywords": [
+      "DeathXmon",
+      "DexDorugoramon",
+      "Dorugoramon",
+      "Kosuke Kisakata"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "xros_heart_rush": {
+    "name": "xros heart rush",
+    "keywords": [
+      "Shoutmon X4 BT10",
+      "Taiki Kudo",
+      "Zenjiro tsuguri",
+      "Akari Hiniomoto"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "xros_heart_x7": {
+    "name": "Xros Heart X7",
+    "keywords": [
+      "Shoutmon X7 BT11",
+      "'Taiki",
+      "Kiriha",
+      "Nene'",
+      "shoutmon",
+      "taiki kudo"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "xros_heart_ex6": {
+    "name": "Xros heart EX6",
+    "keywords": [
+      "Taiki Kudo BT21",
+      "OmniShoutmon",
+      "AtlurBallistamon",
+      "JaegerDorulumon",
+      "RaptorSparrowmon",
+      "ShootingStarmon",
+      "Shoutmon EX6"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "xros_heart_ad01": {
+    "name": "Xros Heart AD01",
+    "keywords": [
+      "Taiki Kudo",
+      "OmniShoutmon",
+      "AtlurBallistamon",
+      "JaegerDorulumon",
+      "RaptorSparrowmon",
+      "ShootingStarmon",
+      "Shoutmon X7 AD01"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "blue_flare": {
+    "name": "Blue Flare",
+    "keywords": [
+      "Metalgreymon",
+      "greymon",
+      "mailbirdramon",
+      "kirihae"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "bagra_army": {
+    "name": "Bagra Army",
+    "keywords": [
+      "Yuu Amano",
+      "Bagramon",
+      "Lilithmon",
+      "Blastmon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "dame_rush": {
+    "name": "Dame Rush",
+    "keywords": [
+      "yuu Amano",
+      "Damemon",
+      "Tuwarmon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "gallantmon": {
+    "name": "Gallantmon",
+    "keywords": [
+      "guilmon",
+      "Growlmon",
+      "WarGrowlmon",
+      "Gallantmon",
+      "Gallantmon X Antibody",
+      "takato"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "gallantmon_mill": {
+    "name": "Gallantmon Mill",
+    "keywords": [
+      "guilmon",
+      "BlackGrowlmon",
+      "Growlmon",
+      "BlackWarGrowlmon",
+      "WarGrowlmon",
+      "Gallantmon",
+      "Gallantmon Crimson Mode ACE"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "megidramon": {
+    "name": "Megidramon",
+    "keywords": [
+      "guilmon",
+      "Growlmon",
+      "WarGrowlmon",
+      "Gallantmon",
+      "Megidramon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "chaos_gallant": {
+    "name": "Chaos Gallant",
+    "keywords": [
+      "guilmon",
+      "Chaosgallantmon",
+      "BlackGrowlmon",
+      "Balckwargrowlmon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "titamon": {
+    "name": "Titamon",
+    "keywords": [
+      "Ogremon",
+      "goblimon",
+      "Kinkaumon",
+      "Ginkakumon",
+      "Rebellimon",
+      "Titamon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_titamon": {
+    "name": "TS Titamon",
+    "keywords": [
+      "Titamon",
+      "Skullbaluchimon",
+      "Titamon + Skullbaluchi",
+      "Asuna shiroki",
+      "Ogremon",
+      "Hyogamon",
+      "Fugamon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "sakuyamon": {
+    "name": "Sakuyamon",
+    "keywords": [
+      "Renamon",
+      "Kyubimon",
+      "taomon",
+      "Sakuyamon",
+      "Rika Nonaka",
+      "Taomon ACE"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "megagargo": {
+    "name": "MegaGargo",
+    "keywords": [
+      "Terriermon",
+      "Gargomon",
+      "Rapidmon",
+      "MegaGargomon",
+      "Henry Wong",
+      "MegaGargomon ACE",
+      "rapidmon ACE"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "rapidmon": {
+    "name": "Rapidmon",
+    "keywords": [
+      "Terriermon",
+      "Gargomon",
+      "Rapidmon",
+      "MegaGargomon ACE",
+      "Rapidmon X Antibody"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "cherubim_rookie_rush_purple_hybrid_pre_bt19": {
+    "name": "cherubim rookie Rush/Purple Hybrid pre BT19",
+    "keywords": [
+      "BT7 Cherubimon",
+      "rhihimon",
+      "loweemon",
+      "Bokomon",
+      "BushiAgumon",
+      "Koichi Kimura",
+      "KaiserLeomon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "yellow_vaccine": {
+    "name": "Yellow Vaccine",
+    "keywords": [
+      "Angemon",
+      "patamon",
+      "Angewomon",
+      "T.K. taikshi",
+      "Gatomon",
+      "Kari Kamiya"
+    ],
+    "category": "",
+    "variants": [
+      {
+        "name": "Armor Vaccine",
+        "keywords": [
+          "rapidmon x antibody",
+          "Blinding Ray",
+          "Magnamon X-Antibody",
+          "Lv4 Rapidmon"
+        ],
+        "category": "",
+        "notes": ""
+      },
+      {
+        "name": "Three Great Angels",
+        "keywords": [
+          "Emissary of Hope",
+          "revelation of Light",
+          "Seraphimon",
+          "Dominimon",
+          "MagnaAngemon",
+          "Lucemon",
+          "cupimon",
+          "ophanimon",
+          "Cherubimon",
+          "ArkhaiAngemon",
+          "ShadowSeraphimon",
+          "Luxmon"
+        ],
+        "category": "",
+        "notes": ""
+      }
+    ],
+    "notes": ""
+  },
+  "wargreymon": {
+    "name": "Wargreymon",
+    "keywords": [
+      "agumon",
+      "agumon X antibody",
+      "greymon",
+      "metalgreymon",
+      "wargreymon",
+      "wargreymon x-antidoby",
+      "Tai Kamiya"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "metalgarurumon": {
+    "name": "MetalGarurumon",
+    "keywords": [
+      "gabumon",
+      "gabumon X antibody",
+      "garurumon",
+      "weregarurumon",
+      "metalgarurumon",
+      "metalgarurumon X Antibody",
+      "Matt Ishida"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "gabubond": {
+    "name": "Gabubond",
+    "keywords": [
+      "Gabumon",
+      "Gabumon: Bond of Friendship",
+      "Matt Ishida",
+      "Ice wall"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "agubond": {
+    "name": "Agubond",
+    "keywords": [
+      "agumon",
+      "Greymon",
+      "Agumon: Bond of Bravery",
+      "Tai Kamiya"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "blackwargreymon": {
+    "name": "BlackWargreymon",
+    "keywords": [
+      "agumon",
+      "greymon",
+      "metalgreymon",
+      "blackwargreymon",
+      "gaiomon",
+      "Maki Himekawa",
+      "Blackwargreymon X-antibody",
+      "Yuuya Kuga",
+      "Hades Force",
+      "Deltamon",
+      "Megadramon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "hunters": {
+    "name": "Hunters",
+    "keywords": [
+      "Ryoma Mogami",
+      "Taiki Kudo",
+      "Yuu amano",
+      "Astamon",
+      "Quartzmon",
+      "Quartzmon ACE",
+      "Arresterdramon",
+      "Arresterdramon: Superior Mode",
+      "Gumdramon",
+      "Shoutmon",
+      "tagiru Akashi"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "rival_hunters": {
+    "name": "Rival Hunters",
+    "keywords": [
+      "Ryoma Mogami",
+      "Astamon",
+      "Quartzmon",
+      "Quartzmon ACE",
+      "gumdramon",
+      "opossumon",
+      "Cho-Hakkaimon",
+      "yasyamon",
+      "dracmon",
+      "Ren Tobari",
+      "Airu Suzaki"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "examon": {
+    "name": "Examon",
+    "keywords": [
+      "dracomon",
+      "Coredramon",
+      "Wingdramon",
+      "Groundramon",
+      "Slayerdramon",
+      "Breakdramon",
+      "examon",
+      "Examon X-antibody"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "seven_demon_lords_7dl": {
+    "name": "Seven Demon Lords/7DL",
+    "keywords": [
+      "Lilithmon",
+      "Beelzemon",
+      "Creepymon",
+      "Belphemon: Rage Mode",
+      "Leviamon",
+      "BArbamon",
+      "Lucemon",
+      "Lucemon: Chaos Mode",
+      "Rise of the Seven Great Demon Lords",
+      "biting crush",
+      "Gate of Deadly Sins",
+      "Ogudomon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "royal_knights": {
+    "name": "Royal Knights",
+    "keywords": [
+      "Magnamon",
+      "UlforceVeedramon",
+      "Dynasmon",
+      "LordKnightmon",
+      "Kentaurosmon",
+      "Jesmon",
+      "Examon",
+      "Craniamon",
+      "Gallantmon",
+      "Alphamon",
+      "Omnimon",
+      "leopardmon",
+      "Gankoomon",
+      "Omnimon X Antibody",
+      "Omekamon",
+      "Cool Boy",
+      "Royal knights of the Purge",
+      "The Last Guardian",
+      "jesmon GX",
+      "Alphamon: Ouryumon ACE",
+      "MedievalGallantmon",
+      "King Drasil_7D6"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "rocks": {
+    "name": "Rocks",
+    "keywords": [
+      "Sunarizamon",
+      "Close",
+      "Landramon",
+      "Proganomon",
+      "Pyramidimon",
+      "magneticdramon",
+      "Unique Emblem: Gravel Hearts",
+      "Icemon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "dinos_tyrannomon": {
+    "name": "Dinos/Tyrannomon",
+    "keywords": [
+      "Unique Emblem: Primal Impact",
+      "Ryutaro Williams",
+      "Tyrannomon",
+      "DarkTyrannomon",
+      "Agumon",
+      "Taiga",
+      "MetalTyrannomon",
+      "MAsterTyrannomon",
+      "MetalTyrannomon X Antibody",
+      "Dinomon",
+      "rusttyrannomon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "puppets": {
+    "name": "Puppets",
+    "keywords": [
+      "Unique Emblem: Fable Waltz",
+      "Unique Emblem: Narrative Ronde",
+      "shoemon",
+      "hanimon",
+      "shoeshoemon",
+      "kokeshimon",
+      "Chaperomon",
+      "Karakurumon",
+      "Cendrillmon",
+      "Kaguyamon",
+      "Nyabootmon",
+      "Mirai Kinosaki",
+      "Arisa Kinosaki"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "vortex": {
+    "name": "Vortex",
+    "keywords": [
+      "Unique Emblem: Guardian Vortex",
+      "pteromon",
+      "galemon",
+      "Grandgalemon",
+      "Zephagamon",
+      "Vortexdramon",
+      "Shoto Kazama",
+      "MedievalGallantmon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ice_snow": {
+    "name": "Ice-Snow",
+    "keywords": [
+      "Unique Emblem: Frozen Crown",
+      "penguinmon",
+      "Frigimon",
+      "PolarBearmon",
+      "Skadimon",
+      "Icemon",
+      "suzane Kazuki",
+      "Hexeblaumon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "medusamon": {
+    "name": "Medusamon",
+    "keywords": [
+      "Unique Emblem: Blazing Conductor",
+      "elizamon",
+      "dimetromon",
+      "lamiamon",
+      "Medusamon",
+      "Sytracomon",
+      "Owen Dreadnought",
+      "raging Serpentine"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "heavymetaldramon": {
+    "name": "Heavymetaldramon",
+    "keywords": [
+      "Unique Emblem: Melting Recital",
+      "heavymetaldramon",
+      "Yuuki",
+      "impmon",
+      "Punkmon",
+      "Loudmon",
+      "guilmon",
+      "growlmon",
+      "WarGrowlmon",
+      "Megidramon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "invisimon": {
+    "name": "INvisimon",
+    "keywords": [
+      "Unique Emblem: Invincibly Invisible",
+      "espimon",
+      "hoverespimon",
+      "Oblivimon",
+      "Inivisimon",
+      "Altea",
+      "hagurumon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "exmaquina": {
+    "name": "ExMaquina",
+    "keywords": [
+      "Unique Emblem: Machina's Ascension",
+      "Unchained",
+      "turbomon",
+      "Mulemon",
+      "maquinamon",
+      "maneuvermon",
+      "mockingBirdmon",
+      "Dalphomon",
+      "Metatromon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ghosts": {
+    "name": "Ghosts",
+    "keywords": [
+      "Unique Emblem: Soul Banquet",
+      "Violet Inboots",
+      "ghostmon",
+      "Bakemon",
+      "Soulmon",
+      "Phantomon",
+      "MetalPhantomon",
+      "Necromon",
+      "Duhallamon",
+      "Apparition legion"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "royal_base_bees": {
+    "name": "Royal Base/Bees",
+    "keywords": [
+      "Unique Emblem: Honeycomb Commander",
+      "Winr",
+      "Funbeemon",
+      "waspmon",
+      "forgebeemon",
+      "CannonBeemon",
+      "vespamon",
+      "QueenBeemon",
+      "TigerVespamon ACE",
+      "TigerVespamon",
+      "Fei",
+      "Hornet Eraser",
+      "Royal Base"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "shinegreymon": {
+    "name": "Shinegreymon",
+    "keywords": [
+      "Agumon",
+      "GeoGreymon",
+      "Rizegreymon",
+      "ShineGreymon",
+      "Shinegreymon: Burst Mode",
+      "Shinegreymon: Ruin Mode",
+      "Marcus Damon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "miragegaogamon": {
+    "name": "MirageGaogamon",
+    "keywords": [
+      "Gaomon",
+      "Gaoga",
+      "Machgaogamon",
+      "MirageGaogamon",
+      "Thomas H. Norstein",
+      "MirageGaogamon: Burst Mode"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "rosemon": {
+    "name": "Rosemon",
+    "keywords": [
+      "Palmon",
+      "Palmon X-antibody",
+      "lalamon",
+      "togemon",
+      "Togemon x-antibody",
+      "Lilamon",
+      "sunflowmon",
+      "Lilymon",
+      "Lilymon X-Antibody",
+      "Mimi tachikawa",
+      "Yoshino Fujieda",
+      "Rosemon",
+      "Rosemon X-Anitbody",
+      "Rosemon: Burst Mode"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "yellow_hybrid_pre_bt18": {
+    "name": "Yellow Hybrid Pre-BT18",
+    "keywords": [
+      "Kazemon",
+      "Zephyrmon",
+      "Zoe orimoto",
+      "Reinforcing memory boost",
+      "T.K. takaishi",
+      "T.K. Takaishi & Kari Kamiya",
+      "Wyvern's breath",
+      "RizeGreymon X Antibody",
+      "Rizegreymon",
+      "venusmon",
+      "JetSilphymon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "green_hybrid": {
+    "name": "Green Hybrid",
+    "keywords": [
+      "J.P. Shibayama",
+      "Beetlemon",
+      "MetalKabuterimon",
+      "RhinoKabuterimon",
+      "Flamemon",
+      "Atomic Inferno",
+      "AncientBeetlemon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "blue_hybrid_tommy": {
+    "name": "Blue Hybrid Tommy",
+    "keywords": [
+      "Tommy himi",
+      "Korikakumon",
+      "kumamon",
+      "Beowulfmon",
+      "Sora Takenouchi & Joe Kido"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "blue_hybrid_koji_pre_bt17": {
+    "name": "Blue Hybrid Koji Pre-Bt17",
+    "keywords": [
+      "BT7 strabimon",
+      "Bt4 lobomon",
+      "Kendogarurumon",
+      "Beowulfmon",
+      "Bt7 MagnaGarurumon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ancientgarurumon": {
+    "name": "AncientGarurumon",
+    "keywords": [
+      "Lobomon",
+      "kendogarurumon",
+      "Beowulfmon ancientgarurumon",
+      "Takuya Kanbara & Koji Minamoto",
+      "flamemon",
+      "muchomon",
+      "hammer spark",
+      "ukkomon",
+      "ancient guardian deity"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "red_hybrid": {
+    "name": "Red Hybrid",
+    "keywords": [
+      "Tommy",
+      "Takuya & Zoe",
+      "Takuya Kanbara & Koji Minamoto",
+      "Agunimon",
+      "Aldamon",
+      "EmperorGreymon",
+      "Kumamon",
+      "Kazemon",
+      "Atomic inferno",
+      "flamemon",
+      "Wind to Flame",
+      "Ice to Sword"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "yellow_hybrid": {
+    "name": "Yellow Hybrid",
+    "keywords": [
+      "Koichi",
+      "Koji & J.P.",
+      "Lobomon",
+      "Loweemon",
+      "beetlemon",
+      "Beowulfmon",
+      "kendogarurumon",
+      "Magnagarurumon",
+      "Dark to Light",
+      "Thunder to Gunfire"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "susanoomon": {
+    "name": "Susanoomon",
+    "keywords": [
+      "Tommy",
+      "Takuya & Zoe",
+      "Takuya Kanbara & Koji Minamoto",
+      "Koichi",
+      "Koji & J.P.",
+      "Zoe Orimoto",
+      "Tommy Himi",
+      "Koichi Kimura",
+      "J.P. Shibayama",
+      "Susanoomon",
+      "Susanoomon ACE",
+      "Lord of Devastation and Rebirth"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "silphymon_dna": {
+    "name": "Silphymon DNA",
+    "keywords": [
+      "Gatomon",
+      "Aquillamon",
+      "Salamon",
+      "Hawkmon",
+      "Silphymon",
+      "Valkyrimon",
+      "Yolei Inoue & Kari Kamiya"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "imperialdramon_aggro_paildramon_rush": {
+    "name": "Imperialdramon Aggro/Paildramon Rush",
+    "keywords": [
+      "ST9-06 ImperialDramon: Dragon Mode",
+      "Exveemon",
+      "veemon",
+      "wormmon",
+      "paildramon",
+      "Imperialdramon: Fighter Mode",
+      "return to Primogenitor",
+      "Davis Motomiya & Ken Ichijoji",
+      "Davis Motomiya"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "imperialdramon": {
+    "name": "Imperialdramon",
+    "keywords": [
+      "Exveemon",
+      "veemon",
+      "wormmon",
+      "paildramon",
+      "Imperialdramon: Fighter Mode",
+      "return to Primogenitor",
+      "imperialdramon: Fighter Mode AD1-024",
+      "imperialdramon: Dragon Mode BT12-030",
+      "Davis Motomiya & Ken Ichijoji",
+      "Davis Motomiya"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "shakkoumon_dna": {
+    "name": "Shakkoumon DNA",
+    "keywords": [
+      "Armadillomon",
+      "Patamon",
+      "Angemon",
+      "sheepmon",
+      "Ankylomon",
+      "Shakkoumon",
+      "Vikemon",
+      "etemon",
+      "Shadowseraphimon",
+      "Cody Hida & T.K. Takaishi"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "cs_general": {
+    "name": "CS (General)",
+    "keywords": [
+      "Ami Aiba",
+      "Takumi Aiba",
+      "Kyoko Kuremi",
+      "Kuremi Detective Agency",
+      "palmon",
+      "terriermon",
+      "hagurumon",
+      "togemon",
+      "gargomon",
+      "guardromon",
+      "CYBER EDEN",
+      "Digilab",
+      "Bt22 Omnimon",
+      "Mirei Mikagura",
+      "Yuuko Kamishiro",
+      "Yuugo kamishiro",
+      "Arata Sanada"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "mother_eater": {
+    "name": "Mother Eater",
+    "keywords": [
+      "Yuuko Kamishiro",
+      "Yuugo kamishiro",
+      "Arata Sanada",
+      "Akemi Suedou",
+      "Mother Eater",
+      "Eater (Species Form)",
+      "Eater (Human Form)",
+      "Eater Eve",
+      "Eater Adam",
+      "Eater Bit",
+      "Eater Legion",
+      "King Drasil_7D6"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "mastemon_dna": {
+    "name": "Mastemon DNA",
+    "keywords": [
+      "Angewomon",
+      "LadyDevimon",
+      "Gatomon",
+      "Mirei Mikagura",
+      "Mastemon",
+      "Mastemon ACE",
+      "Chaos Degradation",
+      "Flame Hellscape"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "y_p_security_control": {
+    "name": "Y/P Security Control",
+    "keywords": [
+      "Chaos Degradation",
+      "Flame Hellscape",
+      "MagnaAngemon",
+      "Serphimon",
+      "Reinfrocing Memory Boost",
+      "Holy Wave",
+      "T.K. Takaishi",
+      "Wyvern's Breath"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "r_b_security_control": {
+    "name": "R/B Security Control",
+    "keywords": [
+      "Ultimate Flare",
+      "Gaia Force"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "rookie_rush": {
+    "name": "Rookie Rush",
+    "keywords": [
+      "Liollmon",
+      "Falcomon",
+      "Otamamon",
+      "Aruraumon",
+      "Starmons",
+      "Goblimon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "d_reaper": {
+    "name": "D-reaper",
+    "keywords": [
+      "Mother D-Reaper",
+      "Reaper",
+      "Jeri (Fake)",
+      "ADR-01 Jeri",
+      "ADR-02 Searcher",
+      "ADR-03 Pendulum Feet",
+      "ADR-04 Bubbles",
+      "ADR-05 Creep Hands",
+      "ADR-06 Horn Striker",
+      "ADR-07 Palates",
+      "ADR-08 Optimizer",
+      "ADR-09 Gatekeeper"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "gammamon": {
+    "name": "Gammamon",
+    "keywords": [
+      "Gammamon",
+      "Arcturusmon",
+      "Siriusmon",
+      "GulusGammamon",
+      "Proximamon",
+      "KausGammamon",
+      "Canoweissmon",
+      "Hiro Amanokawa",
+      "WezenGammamon",
+      "Strongest of Brothers"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "angoramon": {
+    "name": "Angoramon",
+    "keywords": [
+      "Angoramon",
+      "SymbareAngoramon",
+      "Lamortmon",
+      "Diarbbitmon",
+      "Ruli Tsukiyono"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "jellymon": {
+    "name": "Jellymon",
+    "keywords": [
+      "Jellymon",
+      "teslaJellymon",
+      "Thetismon",
+      "amphimon",
+      "Kiyoshrio Higashimitarai"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "insectoids": {
+    "name": "Insectoids",
+    "keywords": [
+      "tentomon",
+      "Kabuterimon",
+      "MegaKabuterimon",
+      "HerculesKabuterimon",
+      "Izzy Izumi",
+      "Kuwagamon",
+      "Okuwamon"
+    ],
+    "category": "",
+    "variants": [
+      {
+        "name": "TyrantKabuterimon",
+        "keywords": [
+          "BaldeKuwagamon",
+          "KoKabuterimon",
+          "GranKuwagamon",
+          "MetallifeeKuwagamon",
+          "TyrantKabuterimon"
+        ],
+        "category": "",
+        "notes": ""
+      },
+      {
+        "name": "GrandisKuwagamon",
+        "keywords": [
+          "Palmon",
+          "Kokuwamon X Antibody",
+          "Stingmon",
+          "Okuwamon X-antibody",
+          "Promo Grankuwagamon",
+          "GrandisKuwagamon"
+        ],
+        "category": "",
+        "notes": ""
+      }
+    ],
+    "notes": ""
+  },
+  "leviamon": {
+    "name": "Leviamon",
+    "keywords": [
+      "Syakomon",
+      "Gesomon",
+      "Dragomon",
+      "Leviamon",
+      "Leviamon X Antidoby",
+      "Biting Crush"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "anubismon": {
+    "name": "Anubismon",
+    "keywords": [
+      "Cerberus X-antibody",
+      "dobermon x antibody",
+      "Anubismon",
+      "Calling from Darkness",
+      "MAtt Ishida"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_general": {
+    "name": "TS (General)",
+    "keywords": [
+      "TS promo demidevimon",
+      "TS promo patamon",
+      "TS promo gomamon",
+      "Dan Yuki & Kanan Yuki",
+      "Aegiomon",
+      "Silphymon",
+      "Homeros",
+      "Asuna Shiroki",
+      "Neptunemon",
+      "Merukimon",
+      "Minervamon",
+      "Venusmon",
+      "In-Between Theater"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_neptune": {
+    "name": "TS Neptune",
+    "keywords": [
+      "Venusmon",
+      "Neptunemon",
+      "Divermon",
+      "Shellmon",
+      "Homeros",
+      "Aegiomon",
+      "elecmon",
+      "demidevimon",
+      "gomamon",
+      "Abyss Sanctuary: Throne Room"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_meruki": {
+    "name": "Ts Meruki",
+    "keywords": [
+      "Silphymon",
+      "Gatomon",
+      "Garurumon",
+      "Weregarurumon",
+      "aegiomon",
+      "Dan Yuki & Kanan Yuki",
+      "Aegiomon",
+      "Silphymon",
+      "Homeros",
+      "Asuna Shiroki",
+      "Merukimon",
+      "Minervamon",
+      "Central Town: throne Room"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_marsmon": {
+    "name": "TS MArsmon",
+    "keywords": [
+      "Bearmon",
+      "Grizzlymon",
+      "GreatGrizzlymon",
+      "GrapLeomon",
+      "Callismon",
+      "Marsmon",
+      "Dan Yuki & Kanan Yuki",
+      "Homeros",
+      "paradise Colosseum"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_galaxy": {
+    "name": "TS Galaxy",
+    "keywords": [
+      "Appolomon",
+      "Dianamon",
+      "coronamon",
+      "Lunamon",
+      "Firamon",
+      "lekismon",
+      "Crescemon",
+      "Flaremon",
+      "GraceNovamon",
+      "Cosmic Area"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_jupiter": {
+    "name": "TS Jupiter",
+    "keywords": [
+      "Aegiomon",
+      "Inori Misono",
+      "elecmon",
+      "Aegiochusmon",
+      "Aegiochusmon: Blue",
+      "Aegiochusmon: Green",
+      "Jupitermon",
+      "Dan Yuki & Kanan Yuki",
+      "Aegiomon",
+      "Homeros",
+      "Asuna Shiroki",
+      "Temple of Beginnings"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_juno": {
+    "name": "TS Juno",
+    "keywords": [
+      "Patamon",
+      "Pegasusmon",
+      "shakkoumon",
+      "angemon",
+      "magnaangemon",
+      "junomon",
+      "Guardian Palace",
+      "Aegiomon",
+      "Homeros",
+      "Asuna Shiroki",
+      "clavisangemon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "ts_vulcanus": {
+    "name": "TS Vulcanus",
+    "keywords": [
+      "Factorial Area",
+      "Toyagumon",
+      "coronamon",
+      "Monica Simmons",
+      "Homeros",
+      "Asuna Shiroki",
+      "dragomon",
+      "iron slash",
+      "divine arms",
+      "Vulcanusmon",
+      "Neptunemon",
+      "Dan yuki & Kanan Yuki"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "omnimon_turbo": {
+    "name": "Omnimon Turbo",
+    "keywords": [
+      "Omnimon ACE",
+      "Agumon",
+      "Gabumon",
+      "Nokia Shiramine",
+      "Wargreymon",
+      "MetalGarurumon",
+      "Omnimon",
+      "Omnimon Alter-S",
+      "Miraculous Mega Knight",
+      "Tai Kamiya & Matt Ishida"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "guilmon_birds": {
+    "name": "Guilmon Birds",
+    "keywords": [
+      "Guilmon",
+      "growlmon X antibody",
+      "Garudamon X antibody",
+      "Phoenixmon X antibody",
+      "Ouryumon",
+      "Alphamon: Ouryumon ACE",
+      "Wargrowlmon",
+      "Wargrowlmon X antibody",
+      "Cool Boy",
+      "Growlmon"
+    ],
+    "category": "",
+    "variants": [],
+    "notes": ""
+  },
+  "cerberus_engine": {
+    "name": "Cerberus Engine",
+    "keywords": [
+      "cerberusmon",
+      "werewolf mode",
+      "cerberus",
+      "dark animal",
+      "cerberusmon: werewolf mode",
+      "cerberusmon x"
+    ],
+    "category": "Purple Engine",
+    "variants": [
+      {
+        "name": "Mastemon",
+        "keywords": [
+          "mastemon",
+          "ladydevimon",
+          "angewomon",
+          "gatomon",
+          "mirei"
+        ]
+      },
+      {
+        "name": "Beelzemon",
+        "keywords": [
+          "beelzemon",
+          "impmon",
+          "blast mode"
+        ]
+      },
+      {
+        "name": "Anubismon",
+        "keywords": [
+          "anubismon",
+          "cerberus x",
+          "dobermon"
+        ]
+      },
+      {
+        "name": "Minervamon",
+        "keywords": [
+          "minervamon",
+          "cerberusmon",
+          "werewolf"
+        ]
+      }
+    ],
+    "notes": "Purple consistency engine used across multiple boss archetypes."
+  },
+  "d_brigade": {
+    "name": "D-Brigade",
+    "keywords": [
+      "Commandramon",
+      "Sealsdramon",
+      "Tankdramon",
+      "Darkdramon"
+    ],
+    "category": "",
+    "variants": [
+      {
+        "name": "Commandramon Rush",
+        "keywords": [
+          "Commandramon",
+          "Sealsdramon",
+          "Tankdramon",
+          "Darkdramon",
+          "Buster Mode",
+          "D-Brigade"
+        ],
+        "category": "",
+        "notes": ""
+      },
+      {
+        "name": "DigiPolice",
+        "keywords": [
+          "Guardromon",
+          "Andromon",
+          "HiAndromon",
+          "Hagurumon",
+          "Digital Police"
+        ],
+        "category": "",
+        "notes": ""
+      }
+    ],
+    "notes": ""
+  }
+}

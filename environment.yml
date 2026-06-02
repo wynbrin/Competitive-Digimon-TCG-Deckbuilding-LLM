@@ -1,0 +1,26 @@
+name: digimon
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+  - numpy>=1.23
+  - scipy
+  - scikit-learn>=1.6
+  - pandas
+  - requests
+  - beautifulsoup4
+  - jupyterlab
+  - pip
+  - pip:
+      - umap-learn
+      - psycopg2-binary
+      - tqdm
+      - sentence-transformers
+      - fastapi
+      - uvicorn
+      - pydantic
+      - python-dotenv
+      - matplotlib
+      - seaborn
