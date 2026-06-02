@@ -48,6 +48,12 @@ python scripts/validate_decks.py                    # check data integrity
 - `archetype_keywords` — signal keywords for each archetype
 - `deck_archetypes` — classification results: which archetype(s) each deck matches (populated by `classify_decks.py`)
 
+**Analytical views** (read-only, always live — defined in `schema/005_meta_stats.sql`):
+- `v_archetype_card_usage` — per archetype, each card's inclusion % and avg copies (staples vs. tech)
+- `v_archetype_meta_share` — archetype popularity within each block/format
+- `v_archetype_overall` — archetype popularity across all blocks
+- `v_archetype_performance` — 1st-place rate per archetype (note: source skews to winning lists)
+
 Watch changes live with **SQLTools** (VS Code extension, configured) or `docker exec -it digimon-db psql -U postgres -d digimon`.
 
 ## Editing Archetypes
@@ -63,6 +69,38 @@ python -m ingestion.loaders.ingestion archetypes
 ```
 
 The loader will sync the database: adds, edits, deletions all mirror the file. Archetype IDs stay stable (matched by slug).
+
+## Meta Analysis
+
+The views in `schema/005_meta_stats.sql` are **live** — they recompute on every
+query, so after re-running `classify_decks.py` they reflect the new data with no
+re-apply step. (Re-apply the file only if you change a view *definition*:
+`docker exec -i digimon-db psql -U postgres -d digimon < schema/005_meta_stats.sql`)
+
+Example queries:
+```sql
+-- Staples vs tech for an archetype (high % = core, mid % = flex/tech)
+SELECT card_name, inclusion_pct, avg_copies
+FROM v_archetype_card_usage
+WHERE archetype_name = 'Imperialdramon'
+ORDER BY inclusion_pct DESC;
+
+-- What's popular in the current format
+SELECT archetype_name, deck_count, block_share_pct
+FROM v_archetype_meta_share
+WHERE block_id = 'bt24_ex11'
+ORDER BY deck_count DESC;
+
+-- Which archetypes win most (caveat: source skews to top-cut lists)
+SELECT archetype_name, deck_count, first_place_pct
+FROM v_archetype_performance
+WHERE deck_count >= 40
+ORDER BY first_place_pct DESC;
+```
+
+> Note: `v_archetype_card_usage` groups by `card_id`, so different printings of a
+> card (same name, different set number) appear as separate rows — intentional,
+> since printings can differ in effect/level.
 
 ## Project Structure
 
@@ -102,7 +140,7 @@ data/
 ## Next Steps
 
 - [x] **Deck classifier** — match deck cards against archetype keywords to label each deck (`scripts/classify_decks.py`). Unmatched decks reveal archetypes missing from `archetypes.txt`.
-- [ ] **Meta stats** — card-inclusion rates, tech choices, matchup win rates per archetype/block
+- [x] **Meta stats** — card-inclusion rates, tech choices, meta share, and 1st-place rates per archetype/block (`schema/005_meta_stats.sql` views). True head-to-head matchup win rates are not derivable (source has placements, not match results).
 - [ ] **RAG retrieval** — pgvector embeddings of decks + retrieval layer
 - [ ] **LLM assistant** — Claude API with retrieved decks + meta stats as context
 
