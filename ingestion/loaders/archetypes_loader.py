@@ -52,9 +52,17 @@ def parse_archetypes(path: str = ARCHETYPES_FILE) -> List[Archetype]:
     used_slugs = {}
 
     with open(path, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line or ":" not in line:
+        for lineno, raw_line in enumerate(f, start=1):
+            line = raw_line.strip()
+            if not line:
+                continue
+            if ":" not in line:
+                # A non-blank line without a colon is almost always a wrapped
+                # archetype line — warn rather than silently dropping it.
+                print(
+                    f"WARNING: {path}:{lineno} has no ':' and was skipped "
+                    f"(wrapped line?): {line!r}"
+                )
                 continue
 
             name_part, kw_part = line.split(":", 1)  # split on first colon only
