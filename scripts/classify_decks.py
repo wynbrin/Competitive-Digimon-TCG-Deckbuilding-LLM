@@ -83,14 +83,8 @@ def classify_deck(card_ids, card_norms, archetypes):
     return scored
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--top", type=int, default=5,
-                        help="store at most N candidate archetypes per deck")
-    parser.add_argument("--min-matches", type=int, default=1,
-                        help="ignore archetypes with fewer than M keyword matches")
-    args = parser.parse_args()
-
+def classify(top: int = 5, min_matches: int = 1):
+    """Classify all decks and (re)write deck_archetypes. Importable by refresh.py."""
     conn = get_connection()
     try:
         with conn.cursor() as cur:
@@ -106,7 +100,7 @@ def main():
             unmatched = 0
             for deck_id, card_ids in deck_cards.items():
                 scored = classify_deck(card_ids, card_norms, archetypes)
-                scored = [s for s in scored if s[1] >= args.min_matches][: args.top]
+                scored = [s for s in scored if s[1] >= min_matches][:top]
                 if not scored:
                     unmatched += 1
                     continue
@@ -130,6 +124,16 @@ def main():
               f"({unmatched} with no keyword match), {len(rows)} rows written.")
     finally:
         conn.close()
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--top", type=int, default=5,
+                        help="store at most N candidate archetypes per deck")
+    parser.add_argument("--min-matches", type=int, default=1,
+                        help="ignore archetypes with fewer than M keyword matches")
+    args = parser.parse_args()
+    classify(top=args.top, min_matches=args.min_matches)
 
 
 if __name__ == "__main__":

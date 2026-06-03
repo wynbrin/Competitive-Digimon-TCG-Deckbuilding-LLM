@@ -39,10 +39,22 @@
       "problemMatcher": [],
       "dependsOn": [
         "Docker: Start"
+      ]
+    },
+    {
+      "label": "Refresh (new decks -> classify -> embed)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "scripts/refresh.py"
       ],
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+      "dependsOn": [
+        "Docker: Start"
+      ]
     },
     {
       "label": "Ingest: Cards only",

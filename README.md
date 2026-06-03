@@ -34,6 +34,7 @@ python scripts/ingest_all.py                        # scrape + load everything
 python -m ingestion.loaders.ingestion archetypes    # just archetypes
 python scripts/classify_decks.py                    # label decks by archetype
 python scripts/embed_decks.py                        # build deck embeddings (semantic search)
+python scripts/refresh.py                            # routine update: new decks -> classify -> embed
 python scripts/search_decks.py "red aggro Agumon"   # semantic deck search
 python scripts/ask.py "tech cards for Imperialdramon?"  # LLM deckbuilding assistant
 python scripts/validate_decks.py                    # check data integrity
@@ -107,6 +108,26 @@ ORDER BY first_place_pct DESC;
 > Note: `v_archetype_card_usage` groups by `card_id`, so different printings of a
 > card (same name, different set number) appear as separate rows — intentional,
 > since printings can differ in effect/level.
+
+## Keeping the DB Current
+
+External data changes over time, so re-pull periodically. The one-command refresh:
+```powershell
+python scripts/refresh.py            # new decks -> classify -> embed
+python scripts/refresh.py --cards    # also re-pull cards (do this on set release)
+python scripts/refresh.py --formats  # also re-sync formats + banlist (after editing those files)
+```
+Or VS Code → *Task: Run Task* → *Refresh (new decks -> classify -> embed)*.
+
+What needs refreshing:
+- **decks** — new tournament results post continuously; refresh regularly (idempotent — only adds new).
+- **cards** — only on set release (`--cards`).
+- **classify + embed** — derived from decks, so refresh re-runs them automatically.
+- **meta-stat views** — live; never rebuilt.
+- **formats / banlist** — only when you edit the flat files (`--formats`).
+
+> `refresh.py` never touches the schema. Do **not** run `scripts/migrate.py` to update —
+> it drops and recreates every table.
 
 ## Formats & Banlist
 
