@@ -85,3 +85,17 @@ structural | Megazoo :
 # source-loading, Tamer-fueling). Broad, Xros-heavy mechanic tag rather than a
 # strategic axis — hence the 'engine' tier.
 text | Placement Engine : by placing, under one of your, under this digimon
+
+# @category defense
+
+# Protects your own Digimon: effect immunity, Save (survives deletion), and
+# surviving battle. (Effect-deletion immunity "by your opponent s effects" is the
+# umbrella; it also covers the rarer "isn t affected by your opponent s effects".)
+text | Resilience : by your opponent s effects, it isn t deleted, can t be deleted in battle
+
+# Stops or redirects the opponent's attacks: Blocker walls, defensive <Decoy>
+# (redirect to THIS Digimon, not the offensive <Raid> "to 1 of your opponent"),
+# and outright attack denial. Scored in code (COMBAT_DENIAL_SIGNALS in
+# classify_styles.py) so Blocker — a near-staple keyword — can be weighted below
+# the rarer, more intentional denial effects.
+structural | Combat Denial :

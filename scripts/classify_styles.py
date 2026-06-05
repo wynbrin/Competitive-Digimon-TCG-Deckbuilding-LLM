@@ -70,6 +70,21 @@ GO_WIDE_SIGNALS = [
 ]
 GO_WIDE_SIGNALS_NORM = [_pad(normalize(s)) for s in GO_WIDE_SIGNALS]
 
+# Combat Denial signals with per-phrase weights, matched against card effect
+# text. Blocker is a near-staple keyword (~470 cards), so it counts for a
+# fraction of the rarer, more intentional denial effects (defensive Decoy,
+# outright attack denial). Lower the blocker weight to sharpen the style toward
+# pure denial; raise it to lean back toward "blocker-wall density".
+COMBAT_DENIAL_SIGNALS = {
+    "switch the target of attack to this digimon": 1.0,  # defensive <Decoy>
+    "opponent s digimon can t attack": 1.0,              # outright attack denial
+    "can t attack or block": 1.0,                        # attack lock
+    "blocker": 0.3,                                      # common — down-weighted
+}
+COMBAT_DENIAL_SIGNALS_NORM = [
+    (_pad(normalize(sig)), wt) for sig, wt in COMBAT_DENIAL_SIGNALS.items()
+]
+
 
 def _is_digimon(card) -> bool:
     return (card["type"] or "").strip().lower() == "digimon"
@@ -161,10 +176,29 @@ def score_megazoo(rows, effects):
     return mega_share * diversity, topend_copies
 
 
+def score_combat_denial(rows, effects):
+    """Stops/redirects the opponent's attacks. Weighted copy-share: each card
+    counts at its highest-weight matching signal, so a deck of cheap blockers
+    scores below one running real attack-denial (with blocker down-weighted)."""
+    total = sum(r["quantity"] for r in rows)
+    if total == 0:
+        return 0.0, 0
+    weighted = 0.0
+    hits = 0
+    for r in rows:
+        eff = effects.get(r["card_id"], "")
+        w = max((wt for sig, wt in COMBAT_DENIAL_SIGNALS_NORM if sig in eff), default=0.0)
+        if w > 0:
+            weighted += w * r["quantity"]
+            hits += r["quantity"]
+    return min(1.0, weighted / total), hits
+
+
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
     "megazoo": score_megazoo,
+    "combat_denial": score_combat_denial,
 }
 
 
