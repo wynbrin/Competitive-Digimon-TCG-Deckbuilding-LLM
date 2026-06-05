@@ -210,12 +210,26 @@ def score_hybrid(rows, effects):
     return hyb / total, hyb
 
 
+def score_armor(rows, effects):
+    """Armor digivolution engine: share of Digimon copies that are Armor-form
+    (digivolved with a Digi-Egg). Structural — read off the card `form`."""
+    total = _digimon_copies(rows)
+    if total == 0:
+        return 0.0, 0
+    arm = sum(
+        r["quantity"] for r in rows
+        if _is_digimon(r) and (r.get("form") or "").strip().lower() == "armor form"
+    )
+    return arm / total, arm
+
+
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
     "megazoo": score_megazoo,
     "combat_denial": score_combat_denial,
     "hybrid": score_hybrid,
+    "armor": score_armor,
 }
 
 

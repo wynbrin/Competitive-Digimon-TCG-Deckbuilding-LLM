@@ -98,6 +98,15 @@ text | Trash from Hand : trash 1 card in your hand, trashing 1 card in your hand
 # field in classify_styles.py (cleaner than effect text); the ':' text is ignored.
 structural | Hybrid :
 
+# Armor digivolution engine: deck built on Armor-form Digimon (digivolved with a
+# Digi-Egg). Structural, off the card `form` field (= 'Armor Form'). Leans on
+# Magnamon/Armor Rush and the Imperial decks.
+structural | Armor :
+
+# DNA Digivolution (Jogress) engine: digivolve by combining two Digimon. There is
+# no DNA `form`, so this reads the "DNA digivolve" mechanic from effect text.
+text | DNA Digivolution : dna digivolve, dna digivolving
+
 # @category defense
 
 # Protects your own Digimon: effect immunity, Save (survives deletion), and
