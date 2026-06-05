@@ -45,6 +45,32 @@ def _pad(s: str) -> str:
 # simple starter heuristics — eyeball the output and refine.
 # ---------------------------------------------------------------------------
 
+MEGA_LEVEL = 6  # Lv6+ = Mega / Ultra ("top end")
+
+# Diversity pivots (distinct top-end Digimon in a deck), used to split the two
+# top-heavy styles apart. At/below LOW a deck leans on a single line (pure Tall
+# Stack); at/above HIGH it's a many-mega toolbox (pure Megazoo); linear between.
+# Tuned against observed decks: focused lines run ~3-4 distinct megas, zoos
+# (Royal Knights, 7DL) run ~10-11. Raise HIGH to make "zoo" stricter.
+TOPEND_DIVERSITY_LOW = 3
+TOPEND_DIVERSITY_HIGH = 9
+
+# "Goes wide by effect" engine phrases for Board Spam, matched against card
+# effect text (same normalization as text-style signals). These field extra
+# bodies without a cheap curve: token generation, suspend-cost deploys, cost
+# reduction, and Digisorption. Edit this list to tune what counts as
+# effect-driven swarm. (Kept in code, not styles.txt, because Board Spam blends
+# them with a structural curve term — see score_board_spam.)
+GO_WIDE_SIGNALS = [
+    "token",
+    "digisorption",
+    "by suspending",
+    "you may play 1",
+    "reduce the play cost",
+]
+GO_WIDE_SIGNALS_NORM = [_pad(normalize(s)) for s in GO_WIDE_SIGNALS]
+
+
 def _is_digimon(card) -> bool:
     return (card["type"] or "").strip().lower() == "digimon"
 
@@ -53,33 +79,92 @@ def _digimon_copies(rows) -> int:
     return sum(r["quantity"] for r in rows if _is_digimon(r))
 
 
-def score_board_spam(rows):
-    """Wide/cheap board: share of Digimon copies that are low-level (<= 4)."""
+def _topend_stats(rows):
+    """(digimon_copies, topend_copies, distinct_topend) for one deck.
+
+    distinct_topend counts *different* Lv6+ Digimon cards (rows are already one
+    per distinct card), which is what separates a single-line stack from a zoo.
+    """
+    total = _digimon_copies(rows)
+    topend = [
+        r for r in rows
+        if _is_digimon(r) and r["level"] is not None and r["level"] >= MEGA_LEVEL
+    ]
+    return total, sum(r["quantity"] for r in topend), len(topend)
+
+
+def _topend_diversity(distinct: int) -> float:
+    """0.0 (single-line) .. 1.0 (full zoo), ramped between the pivots."""
+    lo, hi = TOPEND_DIVERSITY_LOW, TOPEND_DIVERSITY_HIGH
+    return max(0.0, min(1.0, (distinct - lo) / (hi - lo)))
+
+
+def score_board_spam(rows, effects):
+    """Goes wide — by a cheap curve AND/OR by effect.
+
+    Two ways a deck floods the board: many low-level (<=4) bodies, or engines
+    that deploy extra Digimon by effect (tokens, suspend-cost plays, cost
+    reduction, Digisorption) even on a higher curve. The two terms are combined
+    as a probabilistic OR, so a deck counts if it swarms cheaply, by effect, or
+    both — that's what catches Vegetation/Vortex/Puppets, which run a normal
+    curve but field a wide board through effects.
+    """
     total = _digimon_copies(rows)
     if total == 0:
         return 0.0, 0
-    cheap = sum(
-        r["quantity"] for r in rows
-        if _is_digimon(r) and r["level"] is not None and r["level"] <= 4
-    )
-    return cheap / total, cheap
+    cheap = gowide = wide = 0
+    for r in rows:
+        is_cheap = _is_digimon(r) and r["level"] is not None and r["level"] <= 4
+        is_gw = any(sig in effects.get(r["card_id"], "") for sig in GO_WIDE_SIGNALS_NORM)
+        if is_cheap:
+            cheap += r["quantity"]
+        if is_gw:
+            gowide += r["quantity"]
+        if is_cheap or is_gw:
+            wide += r["quantity"]
+    low_curve = cheap / total
+    deploy = min(1.0, gowide / total)
+    score = 1.0 - (1.0 - low_curve) * (1.0 - deploy)  # probabilistic OR
+
+    # A wide board of many *distinct* megas is a Megazoo, not spam. Down-weight
+    # by the same top-heavy*diverse factor Megazoo uses, so zoos (Royal Knights)
+    # shed their board-spam bleed while few-mega effect-swarms (Vegetation,
+    # Puppets) are barely touched.
+    _, topend_copies, distinct = _topend_stats(rows)
+    megazoo_factor = (topend_copies / total) * _topend_diversity(distinct)
+    score *= 1.0 - megazoo_factor
+    return score, wide
 
 
-def score_tall_stack(rows):
-    """Traditional tall stack: share of Digimon copies that are top-end (>= 6)."""
-    total = _digimon_copies(rows)
-    if total == 0:
+def score_tall_stack(rows, effects):
+    """Traditional tall stack: top-heavy AND *concentrated* on few lines.
+
+    Same top-heaviness as Megazoo, but rewards leaning on one big digivolution
+    line (few distinct megas) rather than a toolbox of many.
+    """
+    total, topend_copies, distinct = _topend_stats(rows)
+    if total == 0 or topend_copies == 0:
         return 0.0, 0
-    big = sum(
-        r["quantity"] for r in rows
-        if _is_digimon(r) and r["level"] is not None and r["level"] >= 6
-    )
-    return big / total, big
+    mega_share = topend_copies / total
+    concentration = 1.0 - _topend_diversity(distinct)
+    return mega_share * concentration, topend_copies
+
+
+def score_megazoo(rows, effects):
+    """Top-heavy AND *diverse*: many different Lv6+ Digimon cheated out by
+    effect/cost-reduction rather than a single climbed line."""
+    total, topend_copies, distinct = _topend_stats(rows)
+    if total == 0 or topend_copies == 0:
+        return 0.0, 0
+    mega_share = topend_copies / total
+    diversity = _topend_diversity(distinct)
+    return mega_share * diversity, topend_copies
 
 
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
+    "megazoo": score_megazoo,
 }
 
 
@@ -142,7 +227,7 @@ def score_deck(rows, styles, card_effects):
             if scorer is None:
                 # Structural style with no coded scorer yet — skip quietly.
                 continue
-            score, hits = scorer(rows)
+            score, hits = scorer(rows, card_effects)
         else:  # text
             if not s["signals"] or total_copies == 0:
                 continue

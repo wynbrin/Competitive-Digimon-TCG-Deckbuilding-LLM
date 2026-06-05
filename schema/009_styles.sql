@@ -17,7 +17,9 @@ CREATE TABLE styles (
     slug TEXT NOT NULL UNIQUE,        -- stable identifier, e.g. "source_stripping"
     name TEXT NOT NULL,               -- display name, e.g. "Source Stripping"
     kind TEXT NOT NULL                -- 'text' (effect-keyword) | 'structural' (composition)
-        CHECK (kind IN ('text', 'structural'))
+        CHECK (kind IN ('text', 'structural')),
+    category TEXT NOT NULL DEFAULT 'misc'  -- tier, e.g. 'disruption' | 'build' | 'resource'
+                                           -- | 'engine'; set via "# @category X" in styles.txt
 );
 
 -- Effect-text signal phrases for kind='text' styles (none for 'structural').

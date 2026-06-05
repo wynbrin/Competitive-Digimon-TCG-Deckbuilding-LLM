@@ -29,24 +29,59 @@
 # These starter signals are deliberately rough — eyeball the classifier output
 # and tune the phrases before expanding the taxonomy.
 
-# --- Disruption styles (read off effect text) -------------------------------
+# Styles are grouped into TIERS with "# @category <name>" directives below.
+# A directive applies to every style after it until the next one. Categories are
+# free text (stored on each style) — rename or add freely. Current tiers:
+#   disruption — interferes with the opponent's resources/plan
+#   build      — structural deck shape (composition, not effect text)
+#   resource   — engines that generate your own card/security advantage
+#   engine     — recurring mechanical engines that aren't a strategic axis
+#   misc       — default for any style with no @category above it
+
+# @category disruption
 
 # Strips the opponent's digivolution sources / cards out from under their stacks.
-text | Source Stripping : your opponent s digivolution cards, of your opponent s digivolution, trash the bottom digivolution card, trash 1 of your opponent s digivolution
+text | Source Stripping : trash the bottom digivolution card, digivolution card of 1 of your opponent
 
 # Attacks the opponent's hand.
 text | Hand Disruption : from your opponent s hand, your opponent trashes, reveal your opponent s hand, opponent trashes 1 card
 
+# Disrupts the opponent's Tamers (delete / bounce / lock). Action verbs only:
+# the bare "your opponent s tamers" also catches "for each ..."-style conditions.
+text | Tamer Hate : delete 1 of your opponent s tamers, return 1 of your opponent s tamers, your opponent s tamers can t, your opponent s tamers don t unsuspend
+
 # Manipulates / mills the opponent's security stack.
-text | Security Control : your opponent s security, top card of your opponent s security, trash your opponent s security
+text | Security Manipulation : trash the top card of your opponent s security, top card of your opponent s security, reveal the top card of your opponent s security
 
 # Efficient/mass removal and tempo denial (delete, de-digivolve, bounce).
-text | Removal Control : de digivolve, delete 1 of your opponent s, return it to the bottom, by deleting
+text | Removal Control : de digivolve, delete 1 of your opponent s, by deleting, return 1 of your opponent s, to the bottom of, delete all, suspend all of your opponent s, suspend 1 of your opponent s
 
-# --- Structural styles (read off composition) -------------------------------
+# Prevents your opponent's resources from suspending/unsuspending
+text | Stun : can t suspend, can t unsuspend, can t attack or block
+
+# @category resource
+
+# Manipulates both players' hand.
+text | Hand Advantage : Both players draw, for every 4 cards in your opponent s hand, when an effect adds a card, for every 4 cards in your hand
+
+# Manipulates / mills your own security stack for value.
+text | Security As Resource : recovery, top card of your security, to your security stack, search your security
+
+# @category build
+# (structural — read off composition; any ':' text here is ignored, see classify_styles.py)
 
 # Wide, cheap board: lots of low-level / low-cost Digimon (swarm, go-wide).
 structural | Board Spam :
 
 # Traditional tall stack: top-heavy curve, leans on one big digivolution line.
 structural | Tall Stack :
+
+# Top Heavy decks that reduce cost or play by effect
+structural | Megazoo :
+
+# @category engine
+
+# Builds value/board by placing cards under permanents (DigiXros requirements,
+# source-loading, Tamer-fueling). Broad, Xros-heavy mechanic tag rather than a
+# strategic axis — hence the 'engine' tier.
+text | Placement Engine : by placing, under one of your, under this digimon

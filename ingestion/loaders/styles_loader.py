@@ -29,8 +29,8 @@ STYLES_FILE = os.path.join(BASE_DIR, "data", "styles.txt")
 
 VALID_KINDS = {"text", "structural"}
 
-# A parsed style: (slug, display name, kind, [(signal, signal_norm), ...])
-Style = Tuple[str, str, str, List[Tuple[str, str]]]
+# A parsed style: (slug, display name, kind, category, [(signal, signal_norm), ...])
+Style = Tuple[str, str, str, str, List[Tuple[str, str]]]
 
 
 def parse_styles(path: str = STYLES_FILE) -> List[Style]:
@@ -38,11 +38,19 @@ def parse_styles(path: str = STYLES_FILE) -> List[Style]:
     (comments, trailing/double spaces, empty entries from double commas)."""
     entries: List[Style] = []
     used_slugs = {}
+    category = "misc"  # current tier; reset by "# @category X" directives
 
     with open(path, encoding="utf-8") as f:
         for lineno, raw_line in enumerate(f, start=1):
             line = raw_line.strip()
-            if not line or line.startswith("#"):
+            if line.startswith("#"):
+                # "# @category <name>" sets the tier for the styles that follow.
+                directive = line.lstrip("#").strip()
+                if directive.lower().startswith("@category"):
+                    category = directive.split(None, 1)[1].strip().lower() if len(
+                        directive.split(None, 1)) > 1 else "misc"
+                continue
+            if not line:
                 continue
             if "|" not in line:
                 print(
@@ -93,7 +101,7 @@ def parse_styles(path: str = STYLES_FILE) -> List[Style]:
             else:
                 used_slugs[slug] = 1
 
-            entries.append((slug, name, kind, signals))
+            entries.append((slug, name, kind, category, signals))
 
     return entries
 
@@ -113,16 +121,17 @@ def load_styles(path: str = STYLES_FILE, prune: bool = True):
         with conn.cursor() as cur:
             total_signals = 0
             seen_slugs = []
-            for slug, name, kind, signals in entries:
+            for slug, name, kind, category, signals in entries:
                 cur.execute(
                     """
-                    INSERT INTO styles (slug, name, kind)
-                    VALUES (%s, %s, %s)
+                    INSERT INTO styles (slug, name, kind, category)
+                    VALUES (%s, %s, %s, %s)
                     ON CONFLICT (slug)
-                    DO UPDATE SET name = EXCLUDED.name, kind = EXCLUDED.kind
+                    DO UPDATE SET name = EXCLUDED.name, kind = EXCLUDED.kind,
+                                  category = EXCLUDED.category
                     RETURNING id;
                     """,
-                    (slug, name, kind),
+                    (slug, name, kind, category),
                 )
                 style_id = cur.fetchone()["id"]
                 seen_slugs.append(slug)

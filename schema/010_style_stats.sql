@@ -17,6 +17,7 @@ DROP VIEW IF EXISTS v_archetype_styles   CASCADE;
 -- ---------------------------------------------------------------------------
 CREATE OR REPLACE VIEW v_style_overall AS
 SELECT
+    s.category AS style_category,
     s.name AS style_name,
     s.kind AS style_kind,
     count(*) AS scored_decks,
@@ -25,7 +26,7 @@ SELECT
           / count(*), 1)                                          AS lead_share_pct
 FROM deck_styles ds
 JOIN styles s ON s.id = ds.style_id
-GROUP BY s.name, s.kind;
+GROUP BY s.category, s.name, s.kind;
 
 -- ---------------------------------------------------------------------------
 -- Style prevalence per block (format): how the meta's strategic mix shifts.
