@@ -78,7 +78,9 @@ GO_WIDE_SIGNALS_NORM = [_pad(normalize(s)) for s in GO_WIDE_SIGNALS]
 COMBAT_DENIAL_SIGNALS = {
     "switch the target of attack to this digimon": 1.0,  # defensive <Decoy>
     "opponent s digimon can t attack": 1.0,              # outright attack denial
-    "can t attack or block": 1.0,                        # attack lock
+    "can t attack or block": 1.0,                        # attack lock (older template)
+    "your opponent s digimon can t suspend": 1.0,        # newer template: can't
+                                                         # suspend => can't attack
     "blocker": 0.3,                                      # common — down-weighted
 }
 COMBAT_DENIAL_SIGNALS_NORM = [
@@ -194,11 +196,26 @@ def score_combat_denial(rows, effects):
     return min(1.0, weighted / total), hits
 
 
+def score_hybrid(rows, effects):
+    """Hybrid (Frontier spirit-evolution) engine: share of Digimon copies that
+    are Hybrid-form (played/digivolved off a Tamer rather than climbing a curve).
+    Structural — read off the card's `form`, which is cleaner than effect text."""
+    total = _digimon_copies(rows)
+    if total == 0:
+        return 0.0, 0
+    hyb = sum(
+        r["quantity"] for r in rows
+        if _is_digimon(r) and (r.get("form") or "").strip().lower() == "hybrid"
+    )
+    return hyb / total, hyb
+
+
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
     "megazoo": score_megazoo,
     "combat_denial": score_combat_denial,
+    "hybrid": score_hybrid,
 }
 
 
@@ -232,11 +249,11 @@ def load_card_effects(cur):
 
 
 def load_deck_rows(cur):
-    """Return {deck_id: [ {card_id, quantity, type, level, play_cost}, ... ]}."""
+    """Return {deck_id: [ {card_id, quantity, type, level, play_cost, form}, ... ]}."""
     cur.execute(
         """
         SELECT dc.deck_id, dc.card_id, dc.quantity,
-               c.type, c.level, c.play_cost
+               c.type, c.level, c.play_cost, c.form
         FROM deck_cards dc
         JOIN cards c ON c.card_id = dc.card_id;
         """

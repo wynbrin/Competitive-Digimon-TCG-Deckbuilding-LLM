@@ -56,8 +56,9 @@ text | Security Manipulation : trash the top card of your opponent s security, t
 # Efficient/mass removal and tempo denial (delete, de-digivolve, bounce).
 text | Removal Control : de digivolve, delete 1 of your opponent s, by deleting, return 1 of your opponent s, to the bottom of, delete all, suspend all of your opponent s, suspend 1 of your opponent s
 
-# Prevents your opponent's resources from suspending/unsuspending
-text | Stun : can t suspend, can t unsuspend, can t attack or block
+# Prevents your opponent's resources from suspending/unsuspending (suspend-state
+# lock). Attack prevention ("can't attack or block") lives in Combat Denial.
+text | Stun : can t suspend, can t unsuspend
 
 # @category resource
 
@@ -85,6 +86,17 @@ structural | Megazoo :
 # source-loading, Tamer-fueling). Broad, Xros-heavy mechanic tag rather than a
 # strategic axis — hence the 'engine' tier.
 text | Placement Engine : by placing, under one of your, under this digimon
+
+# Self-discard as cost/fuel (trash cards from YOUR OWN hand to pay/power effects).
+# Distinct from Hand Disruption, which trashes the OPPONENT's hand. Leans purple
+# (Cerberus, Leviamon, Fenriloogamon, Belphemon). Action phrasings only — the
+# bare "cards in your hand" also catches "for each card in your hand" conditions.
+text | Trash from Hand : trash 1 card in your hand, trashing 1 card in your hand, trash 2 cards in your hand
+
+# Frontier spirit-evolution engine: deck built on Hybrid-form Digimon (played /
+# digivolved off a Tamer, not climbed). Scored structurally off the card `form`
+# field in classify_styles.py (cleaner than effect text); the ':' text is ignored.
+structural | Hybrid :
 
 # @category defense
 
