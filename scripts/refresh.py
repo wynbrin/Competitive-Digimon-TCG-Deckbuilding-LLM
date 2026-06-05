@@ -59,9 +59,11 @@ def main():
     # Derived layers — must run after new decks land. Imported lazily because
     # they pull in heavy deps (sentence-transformers) only when needed.
     from scripts.classify_decks import classify
+    from scripts.classify_styles import classify as classify_styles
     from scripts.embed_decks import main as embed_main
 
     _step("Classify decks by archetype", classify)
+    _step("Classify decks by style", classify_styles)
     _step("Embed decks for semantic search", embed_main)
 
     print(f"\nRefresh complete in {time.time() - overall:.0f}s. "

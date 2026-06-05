@@ -33,6 +33,7 @@ python scripts/migrate.py                           # reset schema
 python scripts/ingest_all.py                        # scrape + load everything
 python -m ingestion.loaders.ingestion archetypes    # just archetypes
 python scripts/classify_decks.py                    # label decks by archetype
+python scripts/classify_styles.py                   # score decks by strategic style
 python scripts/embed_decks.py                        # build deck embeddings (semantic search)
 python scripts/refresh.py                            # routine update: new decks -> classify -> embed
 python scripts/search_decks.py "red aggro Agumon"   # semantic deck search
@@ -51,6 +52,8 @@ python scripts/validate_decks.py                    # check data integrity
 - `archetypes` — archetype taxonomy
 - `archetype_keywords` — signal keywords for each archetype
 - `deck_archetypes` — classification results: which archetype(s) each deck matches (populated by `classify_decks.py`)
+- `styles` / `style_signals` — strategic style taxonomy + effect-text signals (from `data/styles.txt`)
+- `deck_styles` — per-deck continuous style scores, orthogonal to archetype (populated by `classify_styles.py`)
 - `deck_embeddings` — pgvector embedding per deck for semantic search (populated by `embed_decks.py`)
 - `formats` — the meta/format calendar (block_id, date range, region); maps a deck's date to its meta
 - `banlist` — per-format banned/restricted cards (legality context for the assistant)
@@ -60,6 +63,8 @@ python scripts/validate_decks.py                    # check data integrity
 - `v_archetype_meta_share` — archetype popularity within each block/format
 - `v_archetype_overall` — archetype popularity across all blocks
 - `v_archetype_performance` — 1st-place rate per archetype (note: source skews to winning lists)
+- `v_style_overall` / `v_style_meta_share` — strategic-style prevalence overall and per block
+- `v_archetype_styles` — how each archetype is typically built, by style (the archetype↔style bridge)
 
 Watch changes live with **SQLTools** (VS Code extension, configured) or `docker exec -it digimon-db psql -U postgres -d digimon`.
 
@@ -76,6 +81,54 @@ python -m ingestion.loaders.ingestion archetypes
 ```
 
 The loader will sync the database: adds, edits, deletions all mirror the file. Archetype IDs stay stable (matched by slug).
+
+## Editing Styles
+
+**Styles** are strategic axes (source stripping, board spam, tall stack, …) that
+cut *across* archetypes — the same archetype can be built in several styles. They
+live in [data/styles.txt](data/styles.txt), one per line, in two kinds:
+
+```
+text       | Source Stripping : your opponent s digivolution cards, trash the bottom digivolution card
+structural | Board Spam :
+```
+
+- **`text`** styles are scored by matching their signal phrases against each card's
+  **effect text** (`main_effect` + `source_effect` + `alt_effect`). This is where
+  community knowledge goes: you encode *what an effect that does X reads like*.
+  Phrases are normalized the same way card text is (lowercased, punctuation
+  collapsed), so write them plainly — `"your opponent's hand"` → `your opponent s hand`.
+- **`structural`** styles carry no signals; they're scored from deck **composition**
+  by a heuristic in [scripts/classify_styles.py](scripts/classify_styles.py)
+  (`STRUCTURAL_SCORERS`, keyed by slug). Add a new structural style by adding a
+  line here *and* a scorer function there.
+
+Unlike archetypes (one primary label per deck), **styles are non-exclusive**: every
+deck gets a continuous score in `[0,1]` for each style.
+
+First time only — add the new tables/views to an existing DB **without** a full
+reset (don't run `migrate.py`; it drops every table):
+
+```powershell
+docker exec -i digimon-db psql -U postgres -d digimon < schema/009_styles.sql
+docker exec -i digimon-db psql -U postgres -d digimon < schema/010_style_stats.sql
+```
+
+Then, whenever you edit `data/styles.txt`:
+
+```powershell
+python -m ingestion.loaders.ingestion styles   # sync the taxonomy + signals
+python scripts/classify_styles.py               # re-score every deck
+```
+
+> The shipped signals are deliberately rough. Eyeball the output
+> (`SELECT * FROM v_archetype_styles ORDER BY archetype_name, avg_score DESC;`)
+> and tune the phrases before expanding the taxonomy.
+
+> **Matchups:** your source has *placements*, not head-to-head results, so true
+> win rates aren't derivable. The intended path is to read matchups *qualitatively*
+> off these style axes (e.g. board wipes punish Board Spam; Source Stripping drags
+> down Tall Stack) — heuristics, clearly flagged as such, never fabricated win rates.
 
 ## Meta Analysis
 
@@ -219,6 +272,7 @@ data/
 
 - [x] **Deck classifier** — match deck cards against archetype keywords to label each deck (`scripts/classify_decks.py`). Unmatched decks reveal archetypes missing from `archetypes.txt`.
 - [x] **Meta stats** — card-inclusion rates, tech choices, meta share, and 1st-place rates per archetype/block (`schema/005_meta_stats.sql` views). True head-to-head matchup win rates are not derivable (source has placements, not match results).
+- [x] **Style layer** — strategic axes orthogonal to archetype (source stripping, board spam, tall stack, …), scored per deck from card effect text + composition (`data/styles.txt`, `scripts/classify_styles.py`, `schema/009_styles.sql` + `010_style_stats.sql`). Feeds qualitative matchup reasoning. *Next:* tune the starter signals, then expose `v_archetype_styles` to the assistant in `ask.py`.
 - [x] **RAG retrieval** — pgvector deck embeddings (`embed_decks.py`) + semantic search (`search_decks.py`, `app/services/retrieval.py`)
 - [x] **LLM assistant** — Claude (`claude-opus-4-8`) grounded on retrieved decks + meta stats (`scripts/ask.py`, `app/services/assistant.py`)
 
