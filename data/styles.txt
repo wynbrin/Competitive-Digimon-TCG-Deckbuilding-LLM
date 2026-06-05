@@ -107,6 +107,12 @@ structural | Armor :
 # no DNA `form`, so this reads the "DNA digivolve" mechanic from effect text.
 text | DNA Digivolution : dna digivolve, dna digivolving
 
+# X Antibody engine: deck built on [X Antibody]-trait Digimon (X-evolution), a
+# tribal-style mechanic spanning many color lines. Structural, off digi_type.
+# X decks usually also score Tall Stack (they climb a line) — that overlap is
+# expected; the X engine is the defining axis, not the stack shape.
+structural | X Antibody :
+
 # @category defense
 
 # Protects your own Digimon: effect immunity, Save (survives deletion), and

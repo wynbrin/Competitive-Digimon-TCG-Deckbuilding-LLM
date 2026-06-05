@@ -223,6 +223,22 @@ def score_armor(rows, effects):
     return arm / total, arm
 
 
+def _has_trait(card, trait_lower: str) -> bool:
+    return any((t or "").strip().lower() == trait_lower for t in (card.get("digi_type") or []))
+
+
+def score_x_antibody(rows, effects):
+    """X Antibody engine: share of Digimon copies carrying the [X Antibody] trait
+    (X-evolution). A tribal-style mechanic spanning many lines; structural, off
+    digi_type. X decks tend to co-score Tall Stack, but the X engine is the
+    defining axis, not the stack shape."""
+    total = _digimon_copies(rows)
+    if total == 0:
+        return 0.0, 0
+    xa = sum(r["quantity"] for r in rows if _is_digimon(r) and _has_trait(r, "x antibody"))
+    return xa / total, xa
+
+
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
@@ -230,6 +246,7 @@ STRUCTURAL_SCORERS = {
     "combat_denial": score_combat_denial,
     "hybrid": score_hybrid,
     "armor": score_armor,
+    "x_antibody": score_x_antibody,
 }
 
 
@@ -263,11 +280,11 @@ def load_card_effects(cur):
 
 
 def load_deck_rows(cur):
-    """Return {deck_id: [ {card_id, quantity, type, level, play_cost, form}, ... ]}."""
+    """Return {deck_id: [ {card_id, quantity, type, level, play_cost, form, digi_type}, ... ]}."""
     cur.execute(
         """
         SELECT dc.deck_id, dc.card_id, dc.quantity,
-               c.type, c.level, c.play_cost, c.form
+               c.type, c.level, c.play_cost, c.form, c.digi_type
         FROM deck_cards dc
         JOIN cards c ON c.card_id = dc.card_id;
         """
