@@ -21,6 +21,7 @@ Usage:
 
 import sys
 import os
+import re
 import argparse
 from collections import defaultdict
 
@@ -227,6 +228,23 @@ def _has_trait(card, trait_lower: str) -> bool:
     return any((t or "").strip().lower() == trait_lower for t in (card.get("digi_type") or []))
 
 
+# Mill: trashing cards off the top of a deck (self and/or opponent) to fuel
+# trash-count synergies. Regex (not a plain phrase) so the card count varies and
+# we don't grab "trash the top card of your opponent's SECURITY" (that's Security
+# Manipulation). Matches "trash the top [N] card(s) of your [opponent's] deck".
+MILL_RE = re.compile(r"trash the top (\d+ )?cards? of your (opponent s )?deck")
+
+
+def score_mill(rows, effects):
+    """Mill engine: share of copies that trash off the top of a deck (self-mill
+    like Beelzemon, opponent-mill like Creepymon, or both)."""
+    total = sum(r["quantity"] for r in rows)
+    if total == 0:
+        return 0.0, 0
+    hits = sum(r["quantity"] for r in rows if MILL_RE.search(effects.get(r["card_id"], "")))
+    return hits / total, hits
+
+
 def score_x_antibody(rows, effects):
     """X Antibody engine: share of Digimon copies carrying the [X Antibody] trait
     (X-evolution). A tribal-style mechanic spanning many lines; structural, off
@@ -247,6 +265,7 @@ STRUCTURAL_SCORERS = {
     "hybrid": score_hybrid,
     "armor": score_armor,
     "x_antibody": score_x_antibody,
+    "mill": score_mill,
 }
 
 
