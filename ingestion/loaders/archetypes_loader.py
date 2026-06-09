@@ -54,7 +54,7 @@ def parse_archetypes(path: str = ARCHETYPES_FILE) -> List[Archetype]:
     with open(path, encoding="utf-8") as f:
         for lineno, raw_line in enumerate(f, start=1):
             line = raw_line.strip()
-            if not line:
+            if not line or line.startswith("#"):
                 continue
             if ":" not in line:
                 # A non-blank line without a colon is almost always a wrapped

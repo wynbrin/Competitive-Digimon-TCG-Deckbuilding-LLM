@@ -1,0 +1,162 @@
+# data/styles.txt — strategic STYLE axes, orthogonal to archetype.
+#
+# A style describes *how* a deck wins, not *which* cards it runs. A single
+# archetype can be built in several styles; a deck gets a continuous score in
+# [0,1] for EVERY style (styles are non-exclusive), computed by
+# scripts/classify_styles.py.
+#
+# Two kinds of style, distinguished by the first field:
+#
+#   text       | Name : signal, signal, ...
+#       Signals are phrases matched against card EFFECT text
+#       (main_effect + source_effect + alt_effect). A deck's score = the
+#       fraction of its card copies whose effect text hits any signal.
+#       This is the community-knowledge part: you encode "what an effect that
+#       does X reads like." Phrases are normalized the same way card text is
+#       (lowercased, punctuation collapsed), so write them plainly — e.g.
+#       "your opponent's hand" becomes "your opponent s hand". Multi-word
+#       phrases are fine and are matched as a whole.
+#
+#   structural | Name :
+#       No signals. The score is computed from deck COMPOSITION (curve, levels,
+#       copy counts) by a heuristic coded in classify_styles.py. The line still
+#       lives here so the style has a stable slug/name and shows up in the views.
+#
+# Lines starting with '#' and blank lines are ignored. Edit this file, then:
+#   python -m ingestion.loaders.ingestion styles
+#   python scripts/classify_styles.py
+#
+# These starter signals are deliberately rough — eyeball the classifier output
+# and tune the phrases before expanding the taxonomy.
+
+# Styles are grouped into TIERS with "# @category <name>" directives below.
+# A directive applies to every style after it until the next one. Categories are
+# free text (stored on each style) — rename or add freely. Current tiers:
+#   disruption — interferes with the opponent's resources/plan
+#   build      — structural deck shape (composition, not effect text)
+#   resource   — engines that generate your own card/security advantage
+#   engine     — recurring mechanical engines that aren't a strategic axis
+#   misc       — default for any style with no @category above it
+
+# @category disruption
+
+# Strips the opponent's digivolution sources / cards out from under their stacks.
+text | Source Stripping : trash the bottom digivolution card, digivolution card of 1 of your opponent
+
+# Attacks the opponent's hand.
+text | Hand Disruption : from your opponent s hand, your opponent trashes, reveal your opponent s hand, opponent trashes 1 card
+
+# Disrupts the opponent's Tamers (delete / bounce / lock). Action verbs only:
+# the bare "your opponent s tamers" also catches "for each ..."-style conditions.
+text | Tamer Hate : delete 1 of your opponent s tamers, return 1 of your opponent s tamers, your opponent s tamers can t, your opponent s tamers don t unsuspend
+
+# Manipulates / mills the opponent's security stack.
+text | Security Manipulation : trash the top card of your opponent s security, top card of your opponent s security, reveal the top card of your opponent s security
+
+# Efficient/mass removal and tempo denial (delete, de-digivolve, bounce).
+text | Removal Control : de digivolve, delete 1 of your opponent s, by deleting, return 1 of your opponent s, to the bottom of, delete all, suspend all of your opponent s, suspend 1 of your opponent s
+
+# Prevents your opponent's resources from suspending/unsuspending (suspend-state
+# lock). Attack prevention ("can't attack or block") lives in Combat Denial.
+text | Stun : can t suspend, can t unsuspend
+
+# @category resource
+
+# Manipulates both players' hand.
+text | Hand Advantage : Both players draw, for every 4 cards in your opponent s hand, when an effect adds a card, for every 4 cards in your hand
+
+# Manipulates / mills your own security stack for value.
+text | Security As Resource : recovery, top card of your security, to your security stack, search your security
+
+# @category build
+# (structural — read off composition; any ':' text here is ignored, see classify_styles.py)
+
+# Wide, cheap board: lots of low-level / low-cost Digimon (swarm, go-wide).
+structural | Board Spam :
+
+# Traditional tall stack: top-heavy curve, leans on one big digivolution line.
+structural | Tall Stack :
+
+# Top Heavy decks that reduce cost or play by effect
+structural | Megazoo :
+
+# @category engine
+
+# Builds value/board by placing cards under permanents (DigiXros requirements,
+# source-loading, Tamer-fueling). Broad, Xros-heavy mechanic tag rather than a
+# strategic axis — hence the 'engine' tier.
+text | Placement Engine : by placing, under one of your, under this digimon
+
+# Self-discard as cost/fuel (trash cards from YOUR OWN hand to pay/power effects).
+# Distinct from Hand Disruption, which trashes the OPPONENT's hand. Leans purple
+# (Cerberus, Leviamon, Fenriloogamon, Belphemon). Action phrasings only — the
+# bare "cards in your hand" also catches "for each card in your hand" conditions.
+text | Trash from Hand : trash 1 card in your hand, trashing 1 card in your hand, trash 2 cards in your hand
+
+# Frontier spirit-evolution engine: deck built on Hybrid-form Digimon (played /
+# digivolved off a Tamer, not climbed). Scored structurally off the card `form`
+# field in classify_styles.py (cleaner than effect text); the ':' text is ignored.
+structural | Hybrid :
+
+# Armor digivolution engine: deck built on Armor-form Digimon (digivolved with a
+# Digi-Egg). Structural, off the card `form` field (= 'Armor Form'). Leans on
+# Magnamon/Armor Rush and the Imperial decks.
+structural | Armor :
+
+# DNA Digivolution (Jogress) engine: digivolve by combining two Digimon. There is
+# no DNA `form`, so this reads the "DNA digivolve" mechanic from effect text.
+text | DNA Digivolution : dna digivolve, dna digivolving
+
+# X Antibody engine: deck built on [X Antibody]-trait Digimon (X-evolution), a
+# tribal-style mechanic spanning many color lines. Structural, off digi_type.
+# X decks usually also score Tall Stack (they climb a line) — that overlap is
+# expected; the X engine is the defining axis, not the stack shape.
+structural | X Antibody :
+
+# Mill engine: trashing cards off the top of a deck to fuel trash-count synergies
+# — self-mill (Beelzemon: "trash the top 2 cards of your deck"), opponent-mill
+# (Creepymon: "...of your opponent's deck"), or both. Scored by regex in
+# classify_styles.py (MILL_RE) so card counts vary and it doesn't grab
+# security-trashing; the ':' text here is ignored.
+structural | Mill :
+
+# Reanimation engine: bring Digimon back from the trash to the board ("play 1 ...
+# from your trash without paying" / "...with the play cost reduced"). The board
+# half of the graveyard package that pairs with Mill (which fuels the trash).
+text | Reanimation : from your trash without paying, from your trash with the play cost reduced
+
+# Trait-defined engines: over-encompassing themed traits that span many colors
+# and Digimon, each with several archetype variants built on top. Scored
+# structurally off digi_type (trait-density) in classify_styles.py; ':' ignored.
+
+# Adventure (Adventure-01 cast). Also a name-based archetype — engine = the trait.
+structural | Adventure :
+
+# Time Stranger (BT24+ "TS" trait). Was the "TS (General)" archetype.
+structural | Time Stranger :
+
+# Cyber Sleuth ("CS" trait). Was the "CS (General)" archetype.
+structural | Cyber Sleuth :
+
+# DM trait — the <Training> / facedown-digivolution-card package.
+structural | DM :
+
+# Data Squad (Savers) — adds/trashes facedown cards under Tamers.
+structural | Data Squad :
+
+# Beat Break ("BEATBREAK" trait) — facedown-card-under-Tamer package.
+structural | Beat Break :
+
+# @category defense
+
+# Protects your own Digimon: effect immunity, Save (survives deletion), and
+# surviving battle. (Effect-deletion immunity "by your opponent s effects" is the
+# umbrella; it also covers the rarer "isn t affected by your opponent s effects".)
+text | Resilience : by your opponent s effects, it isn t deleted, can t be deleted in battle
+
+# Stops or redirects the opponent's attacks: Blocker walls, defensive <Decoy>
+# (redirect to THIS Digimon, not the offensive <Raid> "to 1 of your opponent"),
+# and outright attack denial. Scored in code (COMBAT_DENIAL_SIGNALS in
+# classify_styles.py) so Blocker — a near-staple keyword — can be weighted below
+# the rarer, more intentional denial effects.
+structural | Combat Denial :
