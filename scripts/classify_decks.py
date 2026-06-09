@@ -5,6 +5,13 @@ For every deck we normalize its card names the same way archetype keywords
 were normalized, then count how many of each archetype's keywords appear as
 whole-token matches in the deck. The top-scoring archetype is flagged primary.
 
+Two kinds of keyword (both written in data/archetypes.txt):
+  * name keywords  — matched against card names (the default).
+  * trait keywords — written "trait:<TraitName>" (e.g. "trait:Hero"); matched
+    against each card's digi_type instead, and counted once per *distinct card*
+    bearing the trait. This lets trait-defined decks (e.g. Hero/Appmon, which
+    reuse names shared with other archetypes) score by how central the trait is.
+
 Results are written to the deck_archetypes table (top N candidates per deck).
 Re-running fully replaces the previous results.
 
@@ -57,6 +64,15 @@ def load_card_norms(cur):
     return {r["card_id"]: _pad(normalize(r["name"])) for r in cur.fetchall()}
 
 
+def load_card_traits(cur):
+    """{card_id: set of normalized digi_type traits} for 'trait:' keywords."""
+    cur.execute("SELECT card_id, digi_type FROM cards WHERE digi_type IS NOT NULL;")
+    return {
+        r["card_id"]: {normalize(t) for t in (r["digi_type"] or []) if t}
+        for r in cur.fetchall()
+    }
+
+
 def load_deck_cards(cur):
     cur.execute("SELECT deck_id, card_id FROM deck_cards;")
     deck_cards = defaultdict(list)
@@ -65,7 +81,7 @@ def load_deck_cards(cur):
     return deck_cards
 
 
-def classify_deck(card_ids, card_norms, archetypes):
+def classify_deck(card_ids, card_norms, card_traits, archetypes):
     """Return [(archetype_id, match_count, match_ratio), ...] sorted best-first."""
     # One blob per deck; ' | ' separators stop keywords matching across cards.
     blob = _pad(" | ".join(card_norms[c] for c in card_ids if c in card_norms))
@@ -74,11 +90,22 @@ def classify_deck(card_ids, card_norms, archetypes):
     for aid, a in archetypes.items():
         if a["n"] == 0:
             continue
-        mc = sum(1 for kw in a["keywords"] if kw in blob)
+        mc = 0
+        for kw in a["keywords"]:
+            token = kw.strip()
+            if token.startswith("trait "):
+                # Trait keyword: count distinct deck cards carrying the trait,
+                # so a trait-defined deck scores by how central the trait is.
+                trait = token[len("trait "):]
+                mc += sum(1 for c in card_ids if trait in card_traits.get(c, ()))
+            elif kw in blob:
+                mc += 1
         if mc > 0:
-            scored.append((aid, mc, mc / a["n"]))
+            # Ratio capped at 1.0 (trait keywords can match many cards from one
+            # keyword, which would otherwise push the fraction above 1).
+            scored.append((aid, mc, min(1.0, mc / a["n"])))
 
-    # Best = most keywords matched, tie-broken by fraction of the archetype hit.
+    # Best = most matches, tie-broken by fraction of the archetype hit.
     scored.sort(key=lambda x: (x[1], x[2]), reverse=True)
     return scored
 
@@ -91,6 +118,7 @@ def classify(top: int = 5, min_matches: int = 1):
             print("Loading archetypes, cards, and decks...")
             archetypes = load_archetypes(cur)
             card_norms = load_card_norms(cur)
+            card_traits = load_card_traits(cur)
             deck_cards = load_deck_cards(cur)
             print(f"  {len(archetypes)} archetypes, {len(card_norms)} cards, "
                   f"{len(deck_cards)} decks")
@@ -99,7 +127,7 @@ def classify(top: int = 5, min_matches: int = 1):
             classified = 0
             unmatched = 0
             for deck_id, card_ids in deck_cards.items():
-                scored = classify_deck(card_ids, card_norms, archetypes)
+                scored = classify_deck(card_ids, card_norms, card_traits, archetypes)
                 scored = [s for s in scored if s[1] >= min_matches][:top]
                 if not scored:
                     unmatched += 1

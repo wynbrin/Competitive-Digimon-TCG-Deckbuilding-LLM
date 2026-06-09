@@ -58,6 +58,8 @@ BlackWargreymon: agumon, greymon, metalgreymon, blackwargreymon, gaiomon, Maki H
 
 Hunters: Ryoma Mogami, Taiki Kudo, Yuu amano, Astamon, Quartzmon, Quartzmon ACE, Arresterdramon, Arresterdramon: Superior Mode, Gumdramon, Shoutmon, tagiru Akashi
 
+Hero: trait:Hero
+
 Rival Hunters: Ryoma Mogami, Astamon, Quartzmon, Quartzmon ACE,, gumdramon, opossumon, Cho-Hakkaimon, yasyamon, dracmon, Ren Tobari, Airu Suzaki
 
 Examon: dracomon, Coredramon, Wingdramon, Groundramon, Slayerdramon, Breakdramon, examon, Examon X-antibody
@@ -251,3 +253,9 @@ Green gacha: koromon, gotsumon, tortomon, mametyramon, jagamon, Izzy Izumi & Mim
 D-brigade/Digipolice: commandramon, hicommandramon, sealsdramon, tankdramon, cargodramon, darkdramon, brigadramon, satsuki tamahime, Shuu yulin, DCD Bomb, numemon
 
 Ouryumon DigiPolice: ryudamon, ginryumon, commandramon, hisaryumon, ouryumon, shuu yulin, the crossroad witch
+
+Birds: biyomon, birddramon, garudamon, garudamon x, Phoenixmon, phoenixmon X
+
+guilBirds: guilmon, growlmon, growlmon x, wargrowlmon, garudamon x, Phoenixmon, phoenixmon X
+
+black hybrid: beetlemon, shoto, metalkabuterimon, mercurymon, sephirothmon, MOther d-reaper, marvin jackson
