@@ -2,6 +2,11 @@
 
 META_BLOCKS = [
     {
+        "block_id": "bt25",
+        "name": "BT25 Dual Revolution (+ ST23 Beatbreak / ST24 Data Squad)",
+        "url": "https://digimonmeta.com/deck-list/decklist-jp-cn-en-bt25-dual-revolution-st23-24/",
+    },
+    {
         "block_id": "ad01",
         "name": "AD-01 Digimon Generation Banlist",
         "url": "https://digimonmeta.com/deck-list/decklist-jp-cn-en-ad-01-digimon-generation-banlist/",
