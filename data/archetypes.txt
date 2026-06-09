@@ -120,7 +120,7 @@ Imperialdramon: Exveemon, veemon, wormmon, paildramon, Imperialdramon: Fighter M
 
 Shakkoumon DNA: Armadillomon, Patamon, Angemon, sheepmon, Ankylomon, Shakkoumon, Vikemon, etemon, Shadowseraphimon, Cody Hida & T.K. Takaishi
 
-CS (General): Ami Aiba, Takumi Aiba, Kyoko Kuremi, Kuremi Detective Agency, palmon, terriermon, hagurumon, togemon, gargomon, guardromon, CYBER EDEN, Digilab, Bt22 Omnimon, Mirei Mikagura, Yuuko Kamishiro, Yuugo kamishiro, Arata Sanada
+# CS (General) retired as an archetype — Cyber Sleuth is now the "Cyber Sleuth" ENGINE (data/styles.txt, trait:CS). Specific CS builds (e.g. CS Alpha) remain archetypes.
 
 Mother Eater:  Yuuko Kamishiro, Yuugo kamishiro, Arata Sanada, Akemi Suedou, Mother Eater, Eater (Species Form), Eater (Human Form), Eater Eve, Eater Adam, Eater Bit, Eater Legion, King Drasil_7D6
 
@@ -148,7 +148,7 @@ Leviamon: Syakomon, Gesomon, Dragomon, Leviamon, Leviamon X Antidoby, Biting Cru
 
 Cerberus: Cerberus X-antibody, dobermon x antibody, goblimon, labramon, Anubismon
 
-TS (General): TS promo demidevimon, TS promo patamon, TS promo gomamon, Dan Yuki & Kanan Yuki, Aegiomon, Silphymon, Homeros, Asuna Shiroki, Neptunemon, Merukimon, Minervamon, Venusmon, In-Between Theater
+# TS (General) retired as an archetype — Time Stranger is now the "Time Stranger" ENGINE (data/styles.txt, trait:TS). Specific TS builds (Neptune, Meruki, Jupiter, ...) remain archetypes.
 
 TS Neptune: Venusmon, Neptunemon, Divermon, Shellmon, Homeros, Aegiomon, elecmon, demidevimon, gomamon, Abyss Sanctuary: Throne Room, lanamon, calmaramon
 
@@ -164,7 +164,7 @@ TS Juno: Patamon, Pegasusmon, shakkoumon, angemon, magnaangemon, junomon, Guardi
 
 TS Vulcanus: Factorial Area, Toyagumon, coronamon, Monica Simmons, Homeros, Asuna Shiroki, dragomon, iron slash, divine arms, Vulcanusmon, Neptunemon, Dan yuki & Kanan Yuki
 
-Omnimon Turbo: Omnimon, Omnimon ACE, Wargreymon, Metalgarurumon, Agumon, Gabumon, Tai Kamiya and Matt Ishida, Miraculous Mega Knight
+Omnimon: Omnimon, Omnimon ACE, Omnimon Alter-S, Omnimon Alter-B, Omnimon Zwart Defeat, Wargreymon, Metalgarurumon, Agumon, Gabumon, Tai Kamiya and Matt Ishida, Miraculous Mega Knight
 
 Digipolice: commandramon, sealsdramon, hicommandramon, numemon, Satsuki Tamehime, Shuu yulin, Cargodramon, tankdramon, Darkdramon, Brigadramon
 
