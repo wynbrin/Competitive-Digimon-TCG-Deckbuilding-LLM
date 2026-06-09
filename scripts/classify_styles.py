@@ -257,6 +257,20 @@ def score_x_antibody(rows, effects):
     return xa / total, xa
 
 
+def _trait_engine(trait_lower):
+    """Build a structural scorer for a trait-defined engine (e.g. Time Stranger,
+    Cyber Sleuth, Data Squad). Score = share of ALL deck copies carrying the
+    trait — these themes span Digimon, Tamers and Options, so we don't restrict
+    to Digimon (unlike X Antibody)."""
+    def scorer(rows, effects):
+        total = sum(r["quantity"] for r in rows)
+        if total == 0:
+            return 0.0, 0
+        n = sum(r["quantity"] for r in rows if _has_trait(r, trait_lower))
+        return n / total, n
+    return scorer
+
+
 STRUCTURAL_SCORERS = {
     "board_spam": score_board_spam,
     "tall_stack": score_tall_stack,
@@ -266,6 +280,13 @@ STRUCTURAL_SCORERS = {
     "armor": score_armor,
     "x_antibody": score_x_antibody,
     "mill": score_mill,
+    # Trait-defined engines (over-encompassing themes spanning many colors).
+    "adventure": _trait_engine("adventure"),
+    "time_stranger": _trait_engine("ts"),
+    "cyber_sleuth": _trait_engine("cs"),
+    "dm": _trait_engine("dm"),
+    "data_squad": _trait_engine("data squad"),
+    "beat_break": _trait_engine("beatbreak"),
 }
 
 

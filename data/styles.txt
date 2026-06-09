@@ -125,6 +125,28 @@ structural | Mill :
 # half of the graveyard package that pairs with Mill (which fuels the trash).
 text | Reanimation : from your trash without paying, from your trash with the play cost reduced
 
+# Trait-defined engines: over-encompassing themed traits that span many colors
+# and Digimon, each with several archetype variants built on top. Scored
+# structurally off digi_type (trait-density) in classify_styles.py; ':' ignored.
+
+# Adventure (Adventure-01 cast). Also a name-based archetype — engine = the trait.
+structural | Adventure :
+
+# Time Stranger (BT24+ "TS" trait). Was the "TS (General)" archetype.
+structural | Time Stranger :
+
+# Cyber Sleuth ("CS" trait). Was the "CS (General)" archetype.
+structural | Cyber Sleuth :
+
+# DM trait — the <Training> / facedown-digivolution-card package.
+structural | DM :
+
+# Data Squad (Savers) — adds/trashes facedown cards under Tamers.
+structural | Data Squad :
+
+# Beat Break ("BEATBREAK" trait) — facedown-card-under-Tamer package.
+structural | Beat Break :
+
 # @category defense
 
 # Protects your own Digimon: effect immunity, Save (survives deletion), and
