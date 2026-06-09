@@ -121,9 +121,9 @@ structural | X Antibody :
 structural | Mill :
 
 # Reanimation engine: bring Digimon back from the trash to the board ("play 1 ...
-# from your trash without paying ..."). The board half of the graveyard package
-# that pairs with Mill (which fuels the trash).
-text | Reanimation : from your trash without paying
+# from your trash without paying" / "...with the play cost reduced"). The board
+# half of the graveyard package that pairs with Mill (which fuels the trash).
+text | Reanimation : from your trash without paying, from your trash with the play cost reduced
 
 # @category defense
 
